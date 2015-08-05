@@ -35,10 +35,11 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            'css/*.css',
-            '**/*.html',
-            'img/*.jpg',
-            'img/*.png',
+            '<%= appConfig.dist_dir %>css/*.css',
+            '<%= appConfig.dist_dir %>js/*.js',
+            '<%= appConfig.dist_dir %>*.html',
+            '<%= appConfig.dist_dir %>img/*.jpg',
+            '<%= appConfig.dist_dir %>img/*.png',
           ],
         },
 
@@ -62,6 +63,12 @@ module.exports = function(grunt) {
             scroll: true,
             links: true,
             forms: true
+          }
+        },
+
+        bsReload: {
+          all: {
+            reload: true
           }
         }
       }

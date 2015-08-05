@@ -1,0 +1,38 @@
+{
+  "name": "s51-whitmoretearooms-co-uk",
+  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:studio51/web-whitmoretearooms.git"
+  },
+  "description": "Website for whitmoretearooms.co.uk , a tea room based in Whitmore, Newcastle-under-Lyme",
+  "authors": "Vlad Radulescu",
+  "license": "MIT",
+  "keywords": [
+    "Grunt",
+    "HTML",
+    "CSS",
+    "JS",
+    "SASS",
+    "Jade",
+    "website",
+    "whitmoretearooms",
+    "studio51"
+  ],
+  "main": [
+    "src/js/main.js"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "latest",
+    "font-awesome": "latest",
+    "modernizr": "latest",
+    "jquery": "latest"
+  },
+  "devDependencies": {},
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
+
