@@ -12,6 +12,8 @@ html(lang="en")
 
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700')
     link(rel='stylesheet', href='css/main.min.css')
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Dosis:400,300,200,500,600,700,800|Poiret+One')
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,300italic')
 
   body
 
@@ -21,17 +23,18 @@ html(lang="en")
           .row
             .navbar-header
               a(href='http://whitmoretearooms.co.uk', title='Suntrap Tanning &amp; Beauty Lounge')
-                img.img-responsive(src='img/logo.svg', alt='Suntrap Tanning &amp; Beauty Lounge', title='Suntrap Tanning &amp; Beauty Lounge')
+                img.img-responsive(src='img/logo-color.svg', alt='Suntrap Tanning &amp; Beauty Lounge', title='Suntrap Tanning &amp; Beauty Lounge')
 
     main
       section.intro
+
       section.services
         .row
 
-          .cd-section.cell-xs-12.cell-sm-6.service.service-tanning
+          .cd-section.cell-xs-12.cell-sm-5.service.service-tanning
             include jade/tanning
 
-          .cd-section.cell-xs-12.cell-sm-2.service.service-massage
+          .cd-section.cell-xs-12.cell-sm-4.service.service-massage
             include jade/massage
 
           .cd-section.cell-xs-12.cell-sm-3.service.service-facial
