@@ -35,6 +35,10 @@ $font-size-lg: $font-size-md + 2px;
 
 /* 0.0 Reset */
 
+p {
+  line-height: 1;
+}
+
 h1, h2, h3, h4, h5, h6,
 p {
   margin: 0;
@@ -424,52 +428,6 @@ $primary-font: 'Source Sans Pro', sans-serif;
   }
 }
 
-$services: "tanning", "vibraxis", "massage", "facial", "waxing", "nails", "elemis", "beauty";
-
-@each $service in $services {
-
-  .service-#{ $service } {
-    background-image: url("../img/#{ $service }.jpg");
-  }
-}
-
-.service {
-  padding: 32px;
-  background-size: cover;
-  // height: 16px * 20;
-
-
-  &-tanning {
-  }
-
-  &-vibraxis {
-
-  }
-
-  &-massage {
-
-  }
-
-  &-facial {
-
-  }
-
-  &-waxing {
-
-  }
-
-  &-nails {
-
-  }
-  &-elemis {
-    background-color: #221D52;
-  }
-
-  &-beauty {
-
-  }
-}
-
 $theme-spacing: 16px;
 
 $theme-color--red: #FFCAB1;
@@ -645,3 +603,179 @@ body {
 .cd-modal {
   background-color: #efefef; }
 
+
+.service {
+  padding: 5px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+/*   height: 300px; */
+/*   transform: all 0.5s ease-in; */
+
+  transition: all .5s ease-in;
+
+}
+
+/*
+
+  [1] Fallback if for some reason there's no image
+  [2] Fallback if the host doesn't support gradients or gradients with image
+  [3] Fallback if the host doesn't support gradients or gradients with image
+
+*/
+
+$opacity: 0.2;
+
+@mixin service-background-image($color, $opacity, $image) {
+  $color: linear-gradient(unquote($color));
+  $image: url("../img/#{ $image }.jpg");
+
+  // background-color: #efefef;  [1]
+  // background-image: $image;   [2]
+  // background-image: $color;   [3]
+  // background-image: $color, $image;
+  background-position: center;
+}
+
+
+.service-tanning {
+  $gradient: "
+    rgba(171, 255, 255, #{$opacity}),
+    rgba(139, 215, 255, #{$opacity}) 47.9%,
+    rgba(141, 217, 255, #{$opacity}) 48.2%,
+    rgba(53, 94, 217, #{$opacity}) 88.7%,
+    rgba(48, 55, 230, #{$opacity}) 98.6%";
+
+  @include service-background-image( $gradient, $opacity, 'tanning');
+
+  background-image:
+    -webkit-linear-gradient(left bottom, rgba(147, 232, 255, 0) 0%, rgba(147, 232, 255, $opacity) 100%),
+    -webkit-linear-gradient(right bottom, rgba(26, 42, 111, 0) 0%, rgba(26, 42, 111, $opacity) 100%),
+    -webkit-linear-gradient(left top, rgba(109, 161, 254, 0) 0%, rgba(109, 161, 254, $opacity) 100%),
+    -webkit-linear-gradient(right top, rgba(43, 96, 209, 0) 0%, rgba(43, 96, 209, $opacity) 100%), url('../img/tanning.jpg');
+}
+
+
+.service-massage {
+  $gradient: "rgba(42, 3, 3, #{$opacity}), rgba(191, 120, 81, #{$opacity}) 50%, rgba(223, 221, 223, #{$opacity})";
+
+  @include service-background-image( $gradient, $opacity, 'massage');
+
+  background-image:
+    -webkit-linear-gradient(right bottom, rgba(248, 212, 146, 0) 0%, rgba(248, 212, 146, $opacity) 100%),
+    -webkit-linear-gradient(left bottom, rgba(156, 45, 8, 0) 0%, rgba(156, 45, 8, $opacity) 100%),
+    -webkit-linear-gradient(left top, rgba(221, 129, 51, 0) 0%, rgba(221, 129, 51, $opacity) 100%),
+    -webkit-linear-gradient(right top, rgba(200, 156, 98, 0) 0%, rgba(200, 156, 98, $opacity) 100%), url('../img/massage.jpg');
+
+}
+
+.service-facial {
+  $gradient: "
+    rgba(249, 244, 242, #{$opacity}) 1.3%,
+    rgba(215, 116, 75, #{$opacity}) 13.7%,
+    rgba(255, 202, 169, #{$opacity}) 47.1%,
+    rgba(241, 197, 167, #{$opacity})";
+
+  @include service-background-image( $gradient, $opacity, 'facial');
+
+  background-image:
+    -webkit-linear-gradient(right bottom, rgba(234, 236, 242, 0) 0%, rgba(234, 236, 242, $opacity) 100%),
+    -webkit-linear-gradient(left bottom, rgba(180, 164, 142, 0) 0%, rgba(180, 164, 142, $opacity) 100%),
+    -webkit-linear-gradient(left top, rgba(104, 92, 81, 0) 0%, rgba(104, 92, 81, $opacity) 100%),
+    -webkit-linear-gradient(right top, rgba(216, 15, 64, 0) 0%, rgba(216, 15, 64, $opacity) 100%), url('../img/facial.jpg');
+}
+
+.service-vibraxis {
+  $gradient: "rgba(42, 3, 3, 0.6), rgba(191, 120, 81, 0.6) 50%, rgba(223, 221, 223, 0.6)";
+
+  @include service-background-image( $gradient, 0.6, 'vibraxis');
+
+  background-image:
+    -webkit-linear-gradient(right top, rgba(128, 59, 45, 0) 0%, rgba(128, 59, 45, $opacity) 100%),
+    -webkit-linear-gradient(right bottom, rgba(177, 112, 97, 0) 0%, rgba(177, 112, 97, $opacity) 100%),
+    -webkit-linear-gradient(left bottom, rgba(238, 199, 183, 0) 0%, rgba(238, 199, 183, $opacity) 100%),
+    -webkit-linear-gradient(left top, rgba(202, 149, 136, 0) 0%, rgba(202, 149, 136, $opacity) 100%), url('../img/vibraxis.jpg');
+}
+
+
+.service-waxing {
+  $gradient: "rgba(42, 3, 3, 0.6), rgba(191, 120, 81, 0.6) 50%, rgba(223, 221, 223, 0.6)";
+
+  @include service-background-image( $gradient, 0.6, 'waxing');
+
+  background-image:
+    -webkit-linear-gradient(right bottom, rgba(172, 180, 184, 0) 0%, rgba(172, 180, 184, $opacity) 100%),
+    -webkit-linear-gradient(left bottom, rgba(251, 252, 255, 0) 0%, rgba(251, 252, 255, $opacity) 100%),
+    -webkit-linear-gradient(left top, rgba(81, 81, 90, 0) 0%, rgba(81, 81, 90, $opacity) 100%),
+    -webkit-linear-gradient(right top, rgba(190, 3, 65, 0) 0%, rgba(190, 3, 65, $opacity) 100%), url('../img/waxing.jpg');
+}
+
+.service-beauty {
+  $gradient: "rgba(42, 3, 3, 0.6), rgba(191, 120, 81, 0.6) 50%, rgba(223, 221, 223, 0.6)";
+
+  @include service-background-image( $gradient, 0.6, 'beauty');
+
+  background-image:
+    -webkit-linear-gradient(left bottom, rgba(227, 226, 225, 0) 0%, rgba(227, 226, 225, $opacity) 100%),
+    -webkit-linear-gradient(left top, rgba(204, 190, 180, 0) 0%, rgba(204, 190, 180, $opacity) 100%),
+    -webkit-linear-gradient(right bottom, rgba(170, 124, 66, 0) 0%, rgba(170, 124, 66, $opacity) 100%),
+    -webkit-linear-gradient(right top, rgba(133, 99, 47, 0) 0%, rgba(133, 99, 47, $opacity) 100%), url('../img/beauty.jpg');
+}
+
+
+.service-nails {
+  $gradient: "rgba(42, 3, 3, 0.6), rgba(191, 120, 81, 0.6) 50%, rgba(223, 221, 223, 0.6)";
+
+  @include service-background-image( $gradient, 0.6, 'nails');
+
+  background-image:
+     -webkit-linear-gradient(right top, rgba(226, 213, 222, 0) 0%, rgba(226, 213, 222, $opacity) 100%),
+     -webkit-linear-gradient(right bottom, rgba(162, 89, 76, 0) 0%, rgba(162, 89, 76, $opacity) 100%),
+     -webkit-linear-gradient(left top, rgba(222, 159, 133, 0) 0%, rgba(222, 159, 133, $opacity) 100%),
+     -webkit-linear-gradient(left bottom, rgba(191, 123, 105, 0) 0%, rgba(191, 123, 105, $opacity) 100%), url('../img/nails.jpg');
+}
+
+.service {
+  background-size: cover;
+  }
+
+.service {
+  text-align: left;
+  padding: 32px;
+
+}
+
+
+
+  .service-title {
+    color: #fff;
+    line-height: 1;
+  }
+
+  .service-description {
+    color: #fff;
+    line-height: 1.3 !important;
+    margin: 32px 0;
+    font-family: 'Lato', sans-serif !important;
+    font-weight: 400 !important;
+    background-color: rgba(255, 255, 255, 0.3);
+
+    padding: 16px;
+    border-radius: 3px;
+  }
+
+  .service .btn {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+    box-shadow: 0 3px 0 0 rgba(255 ,255 ,255, 0.7);
+    font-weight: 400;
+    align-self: flex-end;
+    float: right;
+  }
+
+  .service .btn:hover {
+    background-color: rgba(255 ,255 ,255, 0.7);
+    box-shadow: none;
+
+
+
+  }
