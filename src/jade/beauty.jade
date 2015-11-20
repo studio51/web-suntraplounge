@@ -1,14 +1,19 @@
-.cd-modal-action
-  h1.service-title Beauty Therapy
-  p.service-description
-    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi quaerat
-    | nihil autem minus voluptatem atque aliquid unde delectus aliquam iure cum
-    | vel rerum officiis commodi facere laudantium, ducimus culpa? Consequuntur.
+.service.service-beauty
+  .service-container.service-container--closed
+    svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 500', preserveaspectratio='xMidYMid slice')
+      defs
+        clippath#beautyPath
+          // r = 992 = hyp = Math.sqrt(960*960+250*250)
+          circle.clip(cx='960', cy='250', r='992')
 
-  a.btn.btn-primary(href='#', data-type='modal-trigger') Learn more..
-  span.cd-modal-bg
+      image(clip-path='url(#beautyPath)', width='1920', height='500', xlink:href='img/beauty.jpg')
 
-.micro-page.micro-page--massage.cd-modal
-  .micro-page-content.cd-modal-content
+    .service-content
+      .grid
+        i.service-btn-close.fa.fa-times
 
-a.cd-modal-close(href='#') Close
+        .service-caption
+          h2.service-title Beauty
+          p.service-subtitle A modern day love story
+
+        .service-copy

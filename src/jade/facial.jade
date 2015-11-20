@@ -1,14 +1,41 @@
-.cd-modal-action
-  h1.service-title Microdermabrasion Facial
-  p.service-description
-    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi quaerat
-    | nihil autem minus voluptatem atque aliquid unde delectus aliquam iure cum
-    | vel rerum officiis commodi facere laudantium, ducimus culpa? Consequuntur.
+.service.service-tanning
+  .service-container.service-container--closed
+    svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 500', preserveaspectratio='xMidYMid slice')
+      defs
+        clippath#facialPath
+          // r = 992 = hyp = Math.sqrt(960*960+250*250)
+          circle.clip(cx='960', cy='250', r='992')
+      image(clip-path='url(#facialPath)', width='1920', height='500', xlink:href='img/facial.jpg')
 
-  a.btn.btn-primary(href='#', data-type='modal-trigger') Learn more..
-  span.cd-modal-bg
+    .service-content
+      .grid
+        i.service-btn-close.fa.fa-times
 
-.micro-page.micro-page--massage.cd-modal
-  .micro-page-content.cd-modal-content
+        .service-caption
+          h2.service-title Tanning
+          p.service-subtitle A modern day love story
 
-a.cd-modal-close(href='#') Close
+        .service-copy
+
+          h3
+            | Pro-Intense Lift Effect Facial 1 hour £55.00
+
+          p
+            | Powerfull lifting techniques target sagging jowls, cheeks, chin and neck
+            | for the ultimate lift effect.
+
+          p
+            | Powered by breakthrough technology that combines cutting edge plant skin
+            | ceus, nutrient rich natural lipids &amp; firming plant actives. Powerfull
+            | lifting techniques target sagging jowls, cheeks, chin &amp; neck whilst
+            | helping to reduce puffiness &amp; fluid retention associated with
+            | sagging skin.
+
+          h3
+            | Pro-Intense Lift Effect Facial 1 hour £55.00
+          p
+            |
+            |
+            |
+            |
+

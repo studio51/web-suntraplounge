@@ -17,46 +17,204 @@ html(lang="en")
 
   body
 
-    header
+    header.header
+      .grid
+
+        .row.masthead
+          .cell-sm
+            p.masthead-info
+              | Opening Hours on Monday-Thursday: 09:00-17:00, Friday-Sunday: 10:00-16:00
+
+          .cell-sm-auto
+            ul.list-inline.masthead-social-links
+              li
+                a(href="#", title="Find Suntrap Lounge on Facebook")
+                  i.fa.fa-facebook
+              li
+                a(href="#", title="Find Suntrap Lounge on Instagram")
+                  i.fa.fa-instagram
+
       nav.navbar
-        .container
+        .grid
+
           .row
-            .navbar-header
-              a(href='http://whitmoretearooms.co.uk', title='Suntrap Tanning &amp; Beauty Lounge')
-                img.img-responsive(src='img/logo-color.svg', alt='Suntrap Tanning &amp; Beauty Lounge', title='Suntrap Tanning &amp; Beauty Lounge')
+            .cell-sm-2
+              a(href='http://suntraplounge.co.uk', title='Suntrap Tanning &amp; Beauty Lounge', class='navbar-brand')
+                img.img-responsive(src='img/logo.svg', alt='Suntrap Tanning &amp; Beauty Lounge', title='Suntrap Tanning &amp; Beauty Lounge')
 
-    main
-      section.intro
+            .cell-sm-auto.align-sm-right
+              ul.navbar-container
+                li.navbar-item
+                  a(href='#services', title='Services', class='navbar-link') Services
 
-      section.services
-        .row
+                li.navbar-item
+                  a(href='#the-team', title='Our Team', class='navbar-link') Our Team
 
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-4.cell-lg-4.service.service-tanning
-            include jade/tanning
+                li.navbar-item
+                  a(href='#contact', title='Contact', class='navbar-link') Contact
 
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-4.cell-lg-3.service.service-massage
-            include jade/massage
+    main.main
+      .pattern.pattern--hidden
 
-          .cd-section.cell-xs-12.cell-sm-4.cell-md-4.cell-lg-5.service.service-facial
-            include jade/facial
+      section#about.about
+        .grid
+          h1.section-title.
+            Welcome
 
-          .cd-section.cell-xs-12.cell-sm-4.cell-md-3.cell-lg-3.service.service-waxing
-            include jade/waxing
+          .row.about-content
+            .cell-md
+              h1.about-subtitle.
+                Suntrap Tanning &amp; Beauty Lounge
 
-          .cd-section.cell-xs-12.cell-sm-4.cell-md-3.cell-lg-4.service.service-vibraxis
-            include jade/vibraxis
+              .row
+                .cell-md-auto
+                  img(src='img/suntrap.jpg', alt='Suntrap Tanning &amp; Beauty Lounge', title='Suntrap Tanning &amp; Beauty Lounge')
 
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-3.cell-lg-2.service.service-nails
-            include jade/nails
+                .cell-md
+                  p.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-3.cell-lg-3.service.service-beauty
-            include jade/beauty
+      section#services.services
+        .grid
 
-      section.presentation
-        .elemis
+          .row
+            .cell-xs-12.cell-md
+              include jade/tanning
 
-    footer
-      | Suntrap Lounge
-    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+            .cell-xs-12.cell-md
+              include jade/massage
+
+            .cell-xs-12.cell-md
+              include jade/waxing
+
+            .cell-xs-12.cell-md
+              include jade/facial
+
+            .cell-xs-12.cell-md
+              include jade/nails
+
+            .cell-xs-12.cell-md
+              include jade/beauty
+
+            .cell-xs-12.cell-md
+              include jade/vibraxis
+
+      section#the-team
+        .grid
+          .row
+            .cell-sm
+              img(src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg", class="team-member-photo")
+              span Hy, my name is
+              h1.team-member-name
+                | Lucy Duncan
+
+              p.
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quos reiciendis, quis sint adipisci unde perspiciatis, inventore dicta! Blanditiis eligendi rem quibusdam qui.
+
+              ul
+                li Vibraxis
+                li Beauty Therapy
+                li Microdermabrasion Facial
+
+            .cell-sm
+              img(src="https://s3.amazonaws.com/uifaces/faces/twitter/madysondesigns/128.jpg", class="team-member-photo")
+              span Hy, my name is
+              h1.team-member-name
+                | Cherly Sanchez
+
+              p.
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quos reiciendis, quis sint adipisci unde perspiciatis, inventore dicta! Blanditiis eligendi rem quibusdam qui.
+
+              ul
+                li Vibraxis
+                li Tanning
+                li Nails
+
+            .cell-sm
+              img(src="https://s3.amazonaws.com/uifaces/faces/twitter/pixeliris/128.jpg", class="team-member-photo")
+              span Hy, my name is
+              h1.team-member-name
+                | Pearl Wade
+
+              p.
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quos reiciendis, quis sint adipisci unde perspiciatis, inventore dicta! Blanditiis eligendi rem quibusdam qui.
+
+              ul
+                li Vibraxis
+                li Tanning
+                li Waxing
+
+
+      section#testimonials.testimonials
+        .grid
+          h1.section-title.
+            Testimonials
+
+          .row
+            .cell-sm-5.cell-lg-6.hidden-xs.testimonials-image
+
+            .cell-sm
+              ul.testimonials-container
+                li.testimonial
+                  h3.testimonial-author.
+                    Lilly Springett
+
+                  p.testimonial-content.
+                    Wonderful salon with lovely staff! Had a few treatments here
+                    including a wax for the first time and I was so impressed with
+                    the results I will definitely be back and recommend to anybody!
+                    New management is brill (Liz) xx
+
+    //-   .row
+    //-     .cell-sm-6
+    //-       #map.map
+
+    //-     .cell-sm-6
+    //-       .row
+    //-         .cell-sm
+
+    //-           address
+    //-             h1 Suntrap Lounge
+
+    //-             p.
+    //-               35 Dimsdale Parade East, Wolstanton
+    //-             p.
+    //-               Newcastle-under-Lyme
+    //-             p.
+    //-               ST5 4WS
+
+    //-             a(href='', clas='btn')
+    //-               | Get Directions
+
+    //-       .row
+    //-         .cell-sm.subscribe
+    //-           h2
+    //-             | Subscribe
+
+    //-           p
+    //-             | Would you like to be the first to find about our Vouchers and
+    //-             | Offers? Subscribe to our Newsletter:
+
+    //-           input(type='text', class='form-control', placeholder="Your email address")
+
+    //-   .row.copyright
+    //-     .grid
+    //-       .row
+    //-         .cell-sm
+    //-           | &copy; Suntrap Tanning &amp; Beauty Lounge 2015
+
+    //-         .cell-sm-auto
+    //-           | Design &amp; Development by <a href="">Studio51 Creative Services</a>
+
+    //- script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    //- script(src="http://maps.google.com/maps/api/js?sensor=true")
+    script(src="js/trianglify.min.js")
+    script(src="js/tween-max.min.js")
+    script(src="js/cash.min.js")
+    script(src="js/scroll_to_plugin.min.js")
+    script(src="js/card_circle.min.js")
     script(src="js/main.min.js")
-    script(src="js/velocity.min.js")
+
+    //- script(src="http://localhost:48626/takana.js")
+    //- script.
+    //-   takanaClient.run()

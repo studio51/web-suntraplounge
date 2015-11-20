@@ -1,14 +1,42 @@
-.cd-modal-action
-  h1.service-title Vibraxis
-  p.service-description
-    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi quaerat
-    | nihil autem minus voluptatem atque aliquid unde delectus aliquam iure cum
-    | vel rerum officiis commodi facere laudantium, ducimus culpa? Consequuntur.
+.service.service-tanning
+  .service-container.service-container--closed
+    svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 500', preserveaspectratio='xMidYMid slice')
+      defs
+        clippath#vibraxisPath
+          // r = 992 = hyp = Math.sqrt(960*960+250*250)
+          circle.clip(cx='960', cy='250', r='992')
+      image(clip-path='url(#vibraxisPath)', width='1920', height='500', xlink:href='img/vibraxis.jpg')
 
-  a.btn.btn-primary(href='#', data-type='modal-trigger') Learn more..
-  span.cd-modal-bg
+    .service-content
+      .grid
+        i.service-btn-close.fa.fa-times
 
-.micro-page.micro-page--massage.cd-modal
-  .micro-page-content.cd-modal-content
+        .service-caption
+          h2.service-title Vibraxis
+          p.service-subtitle Vibration Training
 
-a.cd-modal-close(href='#') Close
+        .service-copy
+
+            p.
+              Welcome to our purpose built training suite containing two
+              vibration training machines. Keep fit in a relaxed and friendly
+              atmosphere.
+
+            p.
+              We are proud to use VIBRAXIS - the ultimate in vibration training.
+              Vibration training works all the major muscle groups in less time
+              than conventional exercise, and just 10 minutes a day in the
+              standing position on the VIBRAXIS is the equivalent to one hours
+              resistance training. You can drop a dress size in just one month!
+              VIBRAXIS reduces body fat & cellulite, improves muscle tone &
+              strength and improves your health & well being.
+
+          .row
+            .cell-sm
+
+              h1.
+                Benefits of Vibraxis
+
+              p.
+                Call in for your free trial today! One session on the Vibraxis is £3 or a month’s course (use once daily) is just £20.(For those looking for major inch loss welrecommend using the Vibraxis 3 - 4 times per week.)
+
