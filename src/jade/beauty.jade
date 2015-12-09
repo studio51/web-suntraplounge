@@ -1,4 +1,7 @@
 .service.service-beauty
+  h1.service-title.
+    Beauty
+
   .service-container.service-container--closed
     svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 500', preserveaspectratio='xMidYMid slice')
       defs
@@ -6,14 +9,14 @@
           // r = 992 = hyp = Math.sqrt(960*960+250*250)
           circle.clip(cx='960', cy='250', r='992')
 
-      image(clip-path='url(#beautyPath)', width='1920', height='500', xlink:href='img/beauty.jpg')
+      image(clip-path='url(#beautyPath)', width='1920', height='500', xlink:href='img/categories/beauty.jpg')
 
     .service-content
       .grid
         i.service-btn-close.fa.fa-times
 
         .service-caption
-          h2.service-title Beauty
-          p.service-subtitle A modern day love story
+          h2.service-caption-title Tanning
+          p.service-caption-subtitle A modern day love story
 
         .service-copy

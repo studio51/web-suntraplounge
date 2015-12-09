@@ -1,28 +1,31 @@
-.service.service-tanning
+.service.service-vibraxis
+  h1.service-title Vibraxis
+
   .service-container.service-container--closed
     svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 500', preserveaspectratio='xMidYMid slice')
       defs
         clippath#vibraxisPath
           // r = 992 = hyp = Math.sqrt(960*960+250*250)
           circle.clip(cx='960', cy='250', r='992')
+
       image(clip-path='url(#vibraxisPath)', width='1920', height='500', xlink:href='img/vibraxis.jpg')
 
     .service-content
       .grid
-        i.service-btn-close.fa.fa-times
+        .service-body
+          i.service-btn-close.fa.fa-times
 
-        .service-caption
-          h2.service-title Vibraxis
-          p.service-subtitle Vibration Training
+          .service-caption
+            h2.service-caption-title Vibraxis
 
-        .service-copy
+          .service-copy
 
             p.
               Welcome to our purpose built training suite containing two
               vibration training machines. Keep fit in a relaxed and friendly
               atmosphere.
 
-            p.
+            p.mt.
               We are proud to use VIBRAXIS - the ultimate in vibration training.
               Vibration training works all the major muscle groups in less time
               than conventional exercise, and just 10 minutes a day in the

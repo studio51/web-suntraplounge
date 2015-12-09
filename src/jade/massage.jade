@@ -1,104 +1,135 @@
-.service.service-tanning
+.service.service-massage
+  h1.service-title Massage
+
   .service-container.service-container--closed
     svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 500', preserveaspectratio='xMidYMid slice')
       defs
         clippath#massagePath
           // r = 992 = hyp = Math.sqrt(960*960+250*250)
           circle.clip(cx='960', cy='250', r='992')
+
       image(clip-path='url(#massagePath)', width='1920', height='500', xlink:href='img/massage.jpg')
 
     .service-content
       .grid
-        i.service-btn-close.fa.fa-times
+        .service-body
+          i.service-action.fa.fa-times
 
-        .service-caption
-          h2.service-title Tanning
-          p.service-subtitle A modern day love story
+          .service-caption
+            h2.service-caption-title Massage Therapy
 
-        .service-copy
+            .service-caption-description
+              p.
+                Whether your need is to have a moment of relaxation, reduce muscle tension
+                or attain relief from chronic pain, a theraputic massage can enhance your
+                overall sense of emotional &amp; physical well being..
 
-          | Wether your need is to have a moment of relaxation, reduce muscle tension
-          | or attain relief from chronic pain, a theraputic massage can enhance your
-          | overall sense of emotional &amp; physical well being..
+              p.
+                Let your worries &amp; stresses face away as soon as you enter our
+                treatment rooms. With mood lighting, deep soothing music &amp;
+                electronic heated massage couch.
 
-          h1.micro-page--title Massage Therapy
+              p.mt.
+                Choose from our range of massage treatments all carried out by our
+                passionate &amp; highly experienced therapists.
 
-          p
-            | Let your worries &amp; stresses face away as soon as you enter our
-            | treatment rooms. With mood lighting, deep soothing music &amp;
-            | electronic heated massage couch.
+          .service-copy
+            .alert.alert-info
+              h2.alert-title Benefits of Massage Therapy
+              p.alert-content.
+                Massage therapy is more than relaxing me-time. Studies continue to prove the physical, and emotional benefits of even a single massage therapy session. As the number of proven health benefits grows, so do the number of Americans who turn to Massage Envy for a more balanced lifestyle. In fact, we've provided over 50 million therapeutic massages nationwide. That's a lot of happy, healthy customers.
 
-          p
-            | Choose from our range of massage treatments all carried out by our
-            | passionate &amp; highly experienced therapists.
+              a.btn.btn-info--inverse(href="#service-massage-benefits") Learn More..
 
-          a.btn.btn-success(href="") Click here to find out more about Health Benefits of massage therapy
+            include includes/service-massage-benefits
 
-          img(src="img/massage-deep-tissue.jpg", title="Deep Tissue Massage", alt="Deep Tissue Massage")
+            .row.service-copy-section
+              .cell-sm-auto.mr
+                img.service-copy-image(src='img/massage-deep-tissue.jpg', title='Deep Tissue Massage', alt='Deep Tissue Massage')
 
-          h1.micro-page-section--header Deep tissue massage
+              .cell-sm
+                h2.service-copy-section-title Deep Tissue Massage
 
-          p
-            | The massage focuses on releving tension &amp; aching muscles. The
-            | fundamental elements of the deep tissue muscle massage are experienced
-            | in deep presure using blended massage oils.
+                .service-copy-section-content
+                  .row
+                    .cell-sm.mr
+                      p.
+                        The massage focuses on releving tension &amp; aching muscles. The
+                        fundamental elements of the deep tissue muscle massage are experienced
+                        in deep presure using blended massage oils.
 
-          p
-            | Tailor made to suit the individual needs of the client.
+                      p.mt.
+                        Tailor made to suit the individual needs of the client.
 
-          .card--content-price
-            h2 1 hour £35.00
-            span Introductory price £25.00 and £20 for 1/2hour
+                    .cell-sm-3
+                      h2.service-offer-title 1 hour £35.00
+                      span.service-offer-subtitle Introductory price £25.00 and £20 for 1/2hour
 
-          img(src="img/massage-hot-stone.jpg", title="Hot Stone Massage", alt="Hot Stone Massage")
+            .row.service-copy-section
+              .cell-sm-auto.mr
+                img.service-copy-image(src="img/massage-hot-stone.jpg", title="Hot Stone Massage", alt="Hot Stone Massage")
 
-          h1.
-            Full Body Massage
+              .cell-sm
+                h2.service-copy-section-title Relaxing Full Body Massage
 
-          p.
-            After consultation to find out your specific needs, the therapist will use carefully
-            applied pressures to stimulate the nervous system, to relieve the muscle tension and
-            encourage healthy circulation to disolve away all your stress and tensions.
-          p.
-            Relaxes your body, mind and spirit.
+                .service-copy-section-content
+                  .row
+                    .cell-sm.mr
+                      p.
+                        After consultation to find out your specific needs, the therapist will use carefully
+                        applied pressures to stimulate the nervous system, to relieve the muscle tension and
+                        encourage healthy circulation to disolve away all your stress and tensions.
 
-          .card-price
-            h2 1 hour £35.00
-            span Introductory price £25.00
+                      p.mt.
+                        Relaxes your body, mind and spirit.
 
-            p.
-              Nect, back &amp; Shoulder massage 1/2hour £20.00
+                    .cell-sm-3
+                      h2.service-offer-title 1 hour £35.00
+                      span.service-offer-subtitle Introductory price £25.00
 
-          h1.micro-page-section--header Hot Stone therapy massage
+            .row.service-copy-section
+              .cell-sm-auto.mr
+                img.service-copy-image(src="img/massage-hot-stone.jpg", title="Hot Stone Massage", alt="Hot Stone Massage")
 
-          p
-            | Smooth hot stones are placed on chakra points of the body them
-            | massaged allowing the therapist to access deeper muscle layers, melts
-            | away tension, eases muscle stiffness &amp; increases circulation and
-            | metabolism.
+              .cell-sm
+                h2.service-copy-section-title Hot Stone Therapy Massage
 
-          p
-            | The volcanic stones are believed to promote relaxation and healing, as
-            | well as eliminating negative energy withing the body, mind &amp; soul.
+                .service-copy-section-content
+                  .row
+                    .cell-sm.mr
+                      p.
+                        Smooth hot stones are placed on chakra points of the body them
+                        massaged allowing the therapist to access deeper muscle layers, melts
+                        away tension, eases muscle stiffness &amp; increases circulation and
+                        metabolism.
 
-          .card--content-price
-            h2 1 hour £35.00
-            span Introductory price £25.00
+                      p.mt.
+                        The volcanic stones are believed to promote relaxation and healing, as
+                        well as eliminating negative energy withing the body, mind &amp; soul.
 
-          img(src="img/massage-mother-to-be.jpg", title="Mother to be Massage", alt="Mother to be Massage")
+                    .cell-sm-3
+                      h2.service-offer-title 1 hour £35.00
+                      span.service-offer-subtitle Introductory price £25.00
 
-          h1.micro-page-section--header Mother to be massage
+            .row.service-copy-section
+              .cell-sm-auto.mr
+                img.service-copy-image(src="img/massage-mother-to-be.jpg", title="Mother to be Massage", alt="Mother to be Massage")
 
-          p
-            | Massage therapy during pregnancy is a healthy way to reduce stress and
-            | promote overall welness.
+              .cell-sm
+                h2.service-copy-section-title Mother to be Massage
 
-          p
-            | It can also relieve many of the normal discomoforts experienced during
-            | pregnancy, such as backaches, stiff neck, leg cramps, headeaches and
-            | swelling. Taior made to suit the individual needs of the client.
+                .service-copy-section-content
+                  .row
+                    .cell-sm.mr
+                      p.
+                        Massage therapy during pregnancy is a healthy way to reduce stress and
+                        promote overall welness.
 
-          .card--content-price
-            h2 1 hour £35.00
-            span Introductory price £25.00
+                      p.mt.
+                        It can also relieve many of the normal discomoforts experienced during
+                        pregnancy, such as backaches, stiff neck, leg cramps, headeaches and
+                        swelling. Taior made to suit the individual needs of the client.
 
+                    .cell-sm-3
+                      h2.service-offer-title 1 hour £35.00
+                      span.service-offer-subtitle Introductory price £25.00

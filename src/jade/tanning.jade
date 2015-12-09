@@ -1,4 +1,6 @@
 .service.service-tanning
+  h1.service-title Tanning
+
   .service-container.service-container--closed
     svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 500', preserveaspectratio='xMidYMid slice')
       defs
@@ -9,21 +11,18 @@
       image(clip-path='url(#tanningPath)', width='1920', height='500', xlink:href='img/tanning.jpg')
 
     .service-content
-
       .grid
-        i.service-btn-close.fa.fa-times
+        .service-body
+          i.service-action.fa.fa-times
 
-        .service-caption
-          h2.service-title Tanning
-          p.service-subtitle A modern day love story
+          .service-caption
+            h2.service-caption-title Tanning
 
-        .service-copy
-          .row
-            .cell-md
+            .service-caption-description
               p.
                 On the ground floor you will find our bright &amp; vibrant tanning
                 lounge. Our stand up or lie down sunbeds are regularly maintained,
-                and retubed to the highest standard of cleanliness.
+                retubed and kept to the highest standard of cleanliness.
 
               p.mt.
                 With private rooms, complimentary toiletries and robes all set in
@@ -35,54 +34,53 @@
                 Sunbed prices are £1.50 for 3 minutes or take advantage of our
                 special offers. Sunbed course 60 minutes for £20.
 
-              p.mt.
-                Here at Suntrap we pride ourselves on providing the best tanning
-                and products at affordable prices.
+              //- | We encourage safe and responsible tanning in a supervised
+              //- | environment.
+          .service-copy
+            .alert.alert-info
+              .row
+                .cell-sm-auto.mr
+                  img.img-responsive(src="img/tanning-protan.jpg", title="Deep Tissue Massage", alt="Deep Tissue Massage")
 
-              .alert.alert-info
-                p.
-                  We encourage safe and responsible tanning in a supervised
-                  environment.
+                .cell-sm
+                  h2.alert-title.
+                    Here at Suntrap we pride ourselves on providing the best tanning
+                    and products at affordable prices.
 
-                  strong Over 18's only.
+                  .alert-content
+                    p.
+                      Our wide range of protan accelaerator creams which
+                      boost, enhance and prolong your tan whilst repairing and
+                      replenishing the skin.
 
-            .cell-md-3
-              img.img-responsive(src="img/tanning-protan.jpg", title="Deep Tissue Massage", alt="Deep Tissue Massage")
+                    h3.mt Prices start at just £1.00
 
-            p.
-              Our wide range of protan accelaerator creams which
-              boost, enhance and prolong your tan whilst repairing and
-              replenishing the skin.
+                //- strong Over 18's only.
 
-            h2.
-              Prices start at just £1.00
+            .row.service-copy-section
 
-          .row
-            .cell.cell-xs-12.cell-sm-8
+            .row.service-copy-section
+              .cell-sm-auto.mr
+                img.img-responsive(src='img/shwe_tan_slide_urban_tan.jpg', title='Deep Tissue Massage', alt='Deep Tissue Massage')
 
-              img(src="img/tanning-uv-free.jpg", title="Deep Tissue Massage", alt="Deep Tissue Massage")
+              .cell-sm
+                h2.service-copy-section-title UV Free Tanning
 
-              h1.micro-page-section--header UV Free Tanning
+                .service-copy-section-content
+                  p.
+                    If you prefer to tan without the UV, or you want perfect tan for
+                    that special ocassion, our Urban Spray Tan is for you.
 
-              p
-                | If you prefer to tan without the UV, or you want perfect tan for
-                | that special ocassion, our Urban Spray Tan is for you.
+                  p.mt.
+                    Urban Tan is the most natural looking, paraben and fragrance free,
+                    sunless spray tan that dries in a minute.
+                    It is the chosen product of celebrities &amp; make-up artists and
+                    blends to suit every skin tone.
 
-              p
-                | Urban Tan is the most natural looking, paraber and fragrance free,
-                | sunless spray tan that dries in a minute.
-                | It is the chosen product of celebrities &amp; make-up artists and
-                | blends to suit every skin tone.
+                  p.mt.
+                    Our experienced and educated therapist will carry out a
+                    consultation, carefully selecting and blending the required shade
+                    before applying your flawless tan.
 
-              p
-                | Our experienced and educated therapist will carry out a
-                | consultation, carefully selecting and blending the required shake
-                | before applying your flawaless tan.
-
-            .cell.cell-xs-12.cell-sm-3
-
-              img(src="img/tanning-urban.jpg", title="Deep Tissue Massage", alt="Deep Tissue Massage")
-
-              p
-                | Our luxurious Urban 'Tan at home' range!
-
+                  .alert.alert-info
+                    p Full Body Spray tan £17.00
