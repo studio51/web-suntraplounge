@@ -1,0 +1,28 @@
+.row
+  .cell-sm-6
+    #map.map
+
+  .cell-sm-6
+    address
+      h1 Suntrap Lounge
+
+      p
+        | 35 Dimsdale Parade East, Wolstanton <br />
+        | Newcastle-under-Lyme <br />
+        | ST5 4WS
+
+      form(action='http://maps.google.com/maps', class='geolocation', method='get', target='_blank')
+        input(type='hidden', name='saddr', value='')
+        input(type='hidden', name='daddr', value='ST5 4WS, 35 Dimsdale Parade East, Wolstanton')
+        input(type='submit', value='Get directions')
+
+.row.copyright
+  .grid
+    .row
+      .cell-sm
+        p
+          | Design &amp; Development by <a href='http://www.creative-studio51.co.uk'>Studio51 Creative Services</a>
+
+      .cell-sm-auto
+        p.
+          &copy; Suntrap Tanning &amp; Beauty Lounge 2015
