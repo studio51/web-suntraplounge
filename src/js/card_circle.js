@@ -59,9 +59,8 @@ var Card = (function(window, undefined) {
     this._TL.add(slideContentDown);
     this._TL.add(clipImageIn, 0);
     this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
-    this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.3);
-    this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
-
+    // this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.3);
+    this._TL.add(slideContentUp/*, '-=' + clipImageOut.duration() * 0.6*/);
 
     this.isOpen = true;
 
@@ -88,15 +87,51 @@ var Card = (function(window, undefined) {
    */
   Card.prototype._clipImageIn = function() {
 
-    // Circle.
-    var tween = TweenLite.to(this._clip, 0.8, {
-      attr: {
-        r: 60
-      },
-      ease: Expo.easeInOut
-    });
+    // Polygon.
+    var TL = new TimelineLite;
 
-    return tween;
+    var start = [
+      [0, 1200],
+      [0, 0],
+      [1920, 0],
+      [1920, 1200]
+    ];
+
+    var end = [
+      [916, 430],
+      [1125, 643],
+      [960, 607],
+      [793, 570]
+    ];
+
+    var points = [];
+
+    // Create a tween for each point.
+    start.forEach(function(point, i) {
+
+      var tween = TweenLite.to(point, 1.5, end[i]);
+
+      end[i].onUpdate = function() {
+
+        points.push(point.join());
+
+        // Every 4 point update clip-path.
+        if (points.length === end.length) {
+          $(this._clip).attr('points', points.join(' '));
+          // Reset.
+          points = [];
+        };
+
+      }.bind(this);
+
+      tween.vars.ease = Expo.easeInOut;
+
+      // Add at position 0.
+      TL.add(tween, 0);
+
+    }, this);
+
+    return TL;
   };
 
   /**
@@ -137,7 +172,13 @@ var Card = (function(window, undefined) {
       ease: Expo.easeInOut,
       clearProps: 'all',
       className: '-=' + CLASSES.containerClosed,
-      onUpdate: callback.bind(this, track)
+      onUpdate: callback.bind(this, track),
+      // Fix IE: if the image is set to fixed when CLASSES.containerClosed
+      // is removed IE doesn't follow the tween, fix by setting
+      // the image position to fixed when tween is completed.
+      onComplete: function() {
+        $(this._container).addClass('service-container--fix-image');
+      }.bind(this)
     });
 
     return TL;
@@ -149,12 +190,9 @@ var Card = (function(window, undefined) {
    */
   Card.prototype._clipImageOut = function() {
 
-    // Circle.
-    var radius = $(this._clip).attr('r');
-
     var tween = this._clipImageIn();
 
-    tween.vars.attr.r = radius;
+    tween.reverse();
 
     return tween;
   };

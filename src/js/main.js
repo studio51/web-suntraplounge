@@ -8,21 +8,22 @@ var demo = (function(window, undefined) {
   /**
    * Enum of CSS selectors.
    */
-  var SELECTORS = {
-    pattern: '.pattern',
-    card: '.service',
-    cardImage: '.service-image',
-    cardClose: '.service-btn-close',
-  };
+	var SELECTORS = {
+		pattern: '.pattern',
+		card: '.service',
+		cardImage: '.service-image',
+		cardClose: '.service-btn-close',
+	};
 
-  /**
-   * Enum of CSS classes.
-   */
-  var CLASSES = {
-    patternHidden: 'pattern--hidden',
-    polygon: 'polygon',
-    polygonHidden: 'polygon--hidden'
-  };
+	/**
+	 * Enum of CSS classes.
+	 */
+	var CLASSES = {
+		patternHidden: 'pattern--hidden',
+		polygon: 'polygon',
+		polygonHidden: 'polygon--hidden'
+	};
+
 
   /**
    * Map of svg paths and points.
@@ -48,10 +49,8 @@ var demo = (function(window, undefined) {
       height: window.innerHeight,
       cell_size: 90,
       variance: 1,
-      stroke_width: 0.6,
-      color_function : function(x, y) {
-        return '#de6551';
-      }
+      stroke_width: 1,
+      x_colors: 'Purples'
     }).svg(); // Render as SVG.
 
     _mapPolygons(pattern);
@@ -78,7 +77,7 @@ var demo = (function(window, undefined) {
     polygonMap.paths.forEach(function(polygon) {
 
       // Hide polygons by adding CSS classes to each svg path (used attrs because of IE).
-      $(polygon).attr('class', CLASSES.polygon + ' ' + CLASSES.polygonHidden);
+      $(polygon).attr('class', CLASSES.polygon);
 
       var rect = polygon.getBoundingClientRect();
 
@@ -141,6 +140,8 @@ var demo = (function(window, undefined) {
     if (!card.isOpen) {
       // Open sequence.
 
+      _setPatternBgImg(e.target);
+
       sequence.add(tweenOtherCards);
       sequence.add(card.openCard(_onCardMove), 0);
 
@@ -187,6 +188,18 @@ var demo = (function(window, undefined) {
   };
 
   /**
+   * Add card image to pattern background.
+   * @param {Element} image The clicked SVG Image Element.
+   * @private
+   */
+  function _setPatternBgImg(image) {
+
+    var imagePath = $(image).attr('xlink:href');
+
+    $(SELECTORS.pattern).css('background-image', 'url(' + imagePath + ')');
+  };
+
+  /**
    * Callback to be executed on Tween update, whatever a polygon
    * falls into a circular area defined by the card width the path's
    * CSS class will change accordingly.
@@ -205,9 +218,9 @@ var demo = (function(window, undefined) {
     polygonMap.points.forEach(function(point, i) {
 
       if (_detectPointInCircle(point, radius, center)) {
-        $(polygonMap.paths[i]).attr('class', CLASSES.polygon);
-      } else {
         $(polygonMap.paths[i]).attr('class', CLASSES.polygon + ' ' + CLASSES.polygonHidden);
+      } else {
+        $(polygonMap.paths[i]).attr('class', CLASSES.polygon);
       }
     });
   }
@@ -241,151 +254,89 @@ var demo = (function(window, undefined) {
 // Kickstart Demo.
 window.onload = demo.init;
 
-// jQuery(document).ready(function(event){
-//   var projectsContainer = $('.cd-projects-container'),
-//     navigation = $('.cd-primary-nav'),
-//     triggerNav = $('.cd-nav-trigger'),
-//     logo = $('.cd-logo');
+function getUserLocation() {
+	var input = jQuery('input[name="saddr"]');
 
-//   triggerNav.on('click', function(){
-//     if( triggerNav.hasClass('project-open') ) {
-//       //close project
-//       projectsContainer.removeClass('project-open').find('.selected').removeClass('selected').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-//         $(this).children('.cd-project-info').scrollTop(0).removeClass('has-boxshadow');
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(getPosition);
+		} else {
+			input.val('Gelocation is not supported by your browser, please input your Post Code manually..');
+		}
+	}
 
-//       });
-//       triggerNav.add(logo).removeClass('project-open');
-//     } else {
-//       //trigger navigation visibility
-//       triggerNav.add(projectsContainer).add(navigation).toggleClass('nav-open');
-//     }
-//   });
+	function getPosition(position) {
+		input.val(position.coords.latitude + ', ' + position.coords.longitude)
+	}
+}
 
-//   projectsContainer.on('click', '.single-project', function(){
-//     var selectedProject = $(this);
-//     if( projectsContainer.hasClass('nav-open') ) {
-//       //close navigation
-//       triggerNav.add(projectsContainer).add(navigation).removeClass('nav-open');
-//     } else {
-//       //open project
-//       selectedProject.addClass('selected');
-//       projectsContainer.add(triggerNav).add(logo).addClass('project-open');
-//     }
-//   });
+$(document).ready(function() {
 
-//   projectsContainer.on('click', '.cd-scroll', function(){
-//     //scroll down when clicking on the .cd-scroll arrow
-//     var visibleProjectContent =  projectsContainer.find('.selected').children('.cd-project-info'),
-//       windowHeight = $(window).height();
+	var map = new GMaps({
+		el: '#map',
+		lat: 53.048532,
+		lng: -2.272429
+	});
 
-//     visibleProjectContent.animate({'scrollTop': windowHeight}, 300);
-//   });
+	map.addMarker({
+		lat: 53.048532,
+		lng: -2.262429,
+		title: 'Lima'
+	});
 
-//   //add/remove the .has-boxshadow to the project content while scrolling
-//   var scrolling = false;
-//   projectsContainer.find('.cd-project-info').on('scroll', function(){
-//     if( !scrolling ) {
-//       (!window.requestAnimationFrame) ? setTimeout(updateProjectContent, 300) : window.requestAnimationFrame(updateProjectContent);
-//       scrolling = true;
-//     }
-//   });
+	var open = false;
 
-//   function updateProjectContent() {
-//     var visibleProject = projectsContainer.find('.selected').children('.cd-project-info'),
-//       scrollTop = visibleProject.scrollTop();
-//     ( scrollTop > 0 ) ? visibleProject.addClass('has-boxshadow') : visibleProject.removeClass('has-boxshadow');
-//     scrolling = false;
-//   }
-// });
+	jQuery(window).on('scroll touchmove', function() {
+		jQuery('.navbar').toggleClass('navbar-small', jQuery(document).scrollTop() > 0);
+	});
+
+	jQuery('.navbar-trigger').on('click', function(event) {
+		event.preventDefault();
+
+		var target = jQuery(this).data('target');
+
+		if (!open) {
+			jQuery(this).addClass('opened');
+			jQuery(target).addClass('opened');
+
+			open = true;
+		} else {
+			jQuery(this).removeClass('opened');
+			jQuery(target).removeClass('opened');
+
+			open = false;
+		}
+	});
+
+	jQuery('.tabs li').on('click', function(event) {
+		event.preventDefault();
+
+		if(!jQuery(this).hasClass('active')) {
+			var tab = jQuery(this).index();
+			var child = tab + 1;
+
+			jQuery('.tabs li.active').removeClass('active');
+			jQuery(this).addClass('active');
+			jQuery('.tabs-container .tab-pane.active').removeClass('active');
+			jQuery('.tabs-container .tab-pane:nth-child(' + child + ')').addClass('active');
+		};
+	});
 
 
-// $(document).ready(function() {
-//   var map = new GMaps({
-//     el: '#map',
-//     lat: 53.048532,
-//     lng: -2.262429
-//   });
-// })
+	var random = Math.floor(Math.random() * jQuery('#testimonials li').length);
+	jQuery('#testimonials li').hide().eq(random).show();
 
-// jQuery(document).ready(function($){
-//   //trigger the animation - open modal window
-//   $('[data-type="modal-trigger"]').on('click', function(){
-//     var actionBtn = $(this),
-//       scaleValue = retrieveScale(actionBtn.next('.cd-modal-bg'));
+	// Function to cycle through the reviews by fading them in/out
 
-//     actionBtn.addClass('to-circle');
-//     actionBtn.next('.cd-modal-bg').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-//       animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue, true);
-//     });
+	(function showNextTestimonial() {
+		jQuery('#testimonials li:visible').delay(7500).fadeOut('slow', function() {
+			jQuery(this).appendTo('#testimonials ul');
 
-//     //if browser doesn't support transitions...
-//     if(actionBtn.parents('.no-csstransitions').length > 0 ) animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue, true);
-//   });
+			jQuery('#testimonials li:first').fadeIn('slow', function() {
+				showNextTestimonial();
+			});
+		});
+	})();
 
-//   //trigger the animation - close modal window
-//   $('.cd-section .cd-modal-close').on('click', function(){
-//     closeModal();
-//   });
-//   $(document).keyup(function(event){
-//     if(event.which=='27') closeModal();
-//   });
-
-//   $(window).on('resize', function(){
-//     //on window resize - update cover layer dimention and position
-//     if($('.cd-section.modal-is-visible').length > 0) window.requestAnimationFrame(updateLayer);
-//   });
-
-//   function retrieveScale(btn) {
-//     var btnRadius = btn.width()/2,
-//       left = btn.offset().left + btnRadius,
-//       top = btn.offset().top + btnRadius - $(window).scrollTop(),
-//       scale = scaleValue(top, left, btnRadius, $(window).height(), $(window).width());
-
-//     btn.css('position', 'fixed').velocity({
-//       top: top - btnRadius,
-//       left: left - btnRadius,
-//       translateX: 0,
-//     }, 0);
-
-//     return scale;
-//   }
-
-//   function scaleValue( topValue, leftValue, radiusValue, windowW, windowH) {
-//     var maxDistHor = ( leftValue > windowW/2) ? leftValue : (windowW - leftValue),
-//       maxDistVert = ( topValue > windowH/2) ? topValue : (windowH - topValue);
-//     return Math.ceil(Math.sqrt( Math.pow(maxDistHor, 2) + Math.pow(maxDistVert, 2) )/radiusValue);
-//   }
-
-//   function animateLayer(layer, scaleVal, bool) {
-//     layer.velocity({ scale: scaleVal }, 400, function(){
-//       $('body').toggleClass('overflow-hidden', bool);
-//       (bool)
-//         ? layer.parents('.cd-section').addClass('modal-is-visible').end().off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend')
-//         : layer.removeClass('is-visible').removeAttr( 'style' ).siblings('[data-type="modal-trigger"]').removeClass('to-circle');
-//     });
-//   }
-
-//   function updateLayer() {
-//     var layer = $('.cd-section.modal-is-visible').find('.cd-modal-bg'),
-//       layerRadius = layer.width()/2,
-//       layerTop = layer.siblings('.btn').offset().top + layerRadius - $(window).scrollTop(),
-//       layerLeft = layer.siblings('.btn').offset().left + layerRadius,
-//       scale = scaleValue(layerTop, layerLeft, layerRadius, $(window).height(), $(window).width());
-
-//     layer.velocity({
-//       top: layerTop - layerRadius,
-//       left: layerLeft - layerRadius,
-//       scale: scale,
-//     }, 0);
-//   }
-
-//   function closeModal() {
-//     var section = $('.cd-section.modal-is-visible');
-//     section.removeClass('modal-is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-//       animateLayer(section.find('.cd-modal-bg'), 1, false);
-//     });
-//     //if browser doesn't support transitions...
-//     if(section.parents('.no-csstransitions').length > 0 ) animateLayer(section.find('.cd-modal-bg'), 1, false);
-//   }
-// });
-
+	getUserLocation();
+});
