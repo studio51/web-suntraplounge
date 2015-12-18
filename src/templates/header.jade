@@ -4,23 +4,24 @@ nav.navbar
       .cell-md-5
         .row.navbar-brand-container
 
-          a.navbar-brand(href='http://suntraplounge.co.uk', title='Suntrap Tanning &amp; Beauty Lounge')
-            img.img-responsive(src='img/logo.svg', alt='Suntrap Tanning &amp; Beauty Lounge', title='Suntrap Tanning &amp; Beauty Lounge')
+          a.navbar-brand(href='http://suntraplounge.co.uk', title!= suntrap)
+            img.navbar-brand-image(src='img/suntrap-blue.svg', alt!= suntrap, title!= suntrap)
+            img.navbar-brand-image-small(src='img/suntrap.svg', alt!= suntrap, title!= suntrap)
 
-          a.navbar-trigger(href="#", data-target='#navbar', aria-label='Toggle Navigation')
+          a.navbar-trigger(href='#', data-target='#navbar', aria-label='Toggle Navigation')
             span.lines
 
       .cell-xs-12.cell-md-7.align-md-right
         #navbar.row.navbar-container
           ul.navbar-items-container
             li.navbar-item
-              a.navbar-link(href='#services', title='Services') Services
+              a.navbar-link(href='#services', title='Our services') Services
 
             li.navbar-item
-              a.navbar-link(href='#elemis', title='Elemis') Elemis
+              a.navbar-link(href='#elemis', title='Our Elemis services &amp; Products') Elemis
 
             li.navbar-item
-              a.navbar-link(href='#the-team', title='Our Team') Our Team
+              a.navbar-link(href='#the-team', title='Meet the Team') Our Team
 
             li.navbar-item
-              a.navbar-link(href='#contact', title='Contact') Contact
+              a.navbar-link(href='#contact', title='Get in touch with us') Contact
