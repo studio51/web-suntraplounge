@@ -1,0 +1,43 @@
+.service {
+  &-massage {
+    $service-tanning-color: #FACD86;
+
+    .service {
+      &-meta {
+        background-color: $service-tanning-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-tanning-color, .3);
+        color: #fff;
+
+        .btn {
+          background-color: darken($service-tanning-color, 10%);
+          border-radius: ui(border_radius_size);
+          color: #fff;
+          display: inline-block;
+          font-weight: 400;
+          margin: (ui(spacing) / 2) 0 0;
+          padding: ui(spacing) / 2;
+        }
+      }
+    }
+
+    &-benefit {
+      background-color: darken($service-tanning-color, 10%);
+      padding: ui(spacing) / 2;
+
+      &-container {
+        margin-bottom: -(ui(spacing));
+        margin-left: -(ui(spacing));
+        margin-top: ui(spacing);
+        display: none;
+        width: calc(100% + #{ui(spacing) * 2});
+
+        &.opened {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      & ~ & { margin-top: 1px; }
+    }
+  }
+}

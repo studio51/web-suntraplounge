@@ -20,16 +20,17 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  display: flex;
 }
 
 .row {
   display: flex;
-  flex: 0 1 auto;
+  flex: 1;
   flex-wrap: wrap;
 
-  &--reverse {
-    flex-direction: row-reverse;
-  }
+  &-auto { flex: 0 1 auto; }
+
+  &--reverse { flex-direction: row-reverse; }
 }
 
 %make-cell {

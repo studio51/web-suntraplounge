@@ -1,0 +1,17 @@
+section {
+
+  &.about,
+  &.elemis,
+  &.team { padding: ui(spacing); }
+
+  &.elemis,
+  &.testimonials { background-color: #fff; }
+}
+
+@import '../pages/tanning';
+@import '../pages/massage';
+@import '../pages/waxing';
+@import '../pages/vibraxis';
+@import '../pages/facial';
+@import '../pages/nails';
+@import '../pages/beauty';

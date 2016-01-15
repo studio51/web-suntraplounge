@@ -42,10 +42,10 @@ $grid-columns: 12 !default;
 $mq-base-font-size: 16px !default;
 $mq-responsive: true !default;
 $mq-breakpoints: (
-  xs: 0,
-  sm: 544px, // 48em,
-  md: 768px, // 62em,
-  lg: 992px // 75em
+  xs: 1px,
+  sm: 544px,
+  md: 768px,
+  lg: 992px
 ) !default;
 
 $mq-static-breakpoint: desktop !default;

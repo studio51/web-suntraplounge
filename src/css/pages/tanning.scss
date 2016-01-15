@@ -1,0 +1,13 @@
+.service {
+  &-tanning {
+    $service-tanning-color: #55B3FF;
+
+    .service {
+      &-meta {
+        background-color: $service-tanning-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-tanning-color, .3);
+        color: #fff;
+      }
+    }
+  }
+}

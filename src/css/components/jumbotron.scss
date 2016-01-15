@@ -1,0 +1,38 @@
+.jumbotron {
+  height: 85vh;
+  background-image: url('../img/slider.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  padding: ui(spacing);
+
+  @include mq($from: 'sm') {
+    height: 79vh;
+    padding: 0;
+  }
+
+  .grid { align-items: center; }
+}
+
+.accreditation {
+  @extend .align-center;
+  @extend .align-middle;
+
+  &:first-child { @extend .align-top; }
+  &:last-child { @extend .align-bottom; }
+
+  &s {
+    background-color: #fff;
+    height: 15vh;
+    padding: ui(spacing);
+
+    @include mq($from: 'sm') {
+      height: 21vh;
+      padding: ui(spacing) 0;
+    }
+  }
+
+  img {
+    filter: grayscale(100%);
+    width: calc(100% - #{ui(spacing)});
+  }
+}

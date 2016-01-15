@@ -1,0 +1,44 @@
+.about {
+
+  &-image {
+    $image-size: 200px;
+
+    border-radius: 100%;
+    display: block;
+    height: $image-size;
+    margin: 0 auto;
+    width: 200px;
+
+    @include mq($until: 'sm') {
+      margin-bottom: ui(spacing);
+      width: $image-size;
+    }
+  }
+
+  &-content {
+    background-color: #fff;
+    border-radius: ui(border_radius_size);
+    padding: ui(spacing);
+
+    @include mq($from: 'sm') {
+      [class*='cell']:last-child { margin-left: ui(spacing); }
+    }
+  }
+
+  .about-title {
+    @extend .section-title;
+
+    font-size: 1.8em;
+
+    @include mq($until: 'sm') {
+      align-self: center;
+      text-align: center;
+
+      &::after {
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+  }
+}
