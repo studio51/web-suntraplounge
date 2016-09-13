@@ -1,0 +1,18 @@
+.service {
+  &-vibraxis {
+    $service-vibraxis-color: #f0f0ff;
+
+    .service {
+
+      &-title {
+        background-color: rgba($service-vibraxis-color, .3);
+      }
+
+      &-meta {
+        background-color: $service-vibraxis-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-vibraxis-color, .3);
+        color: #fff;
+      }
+    }
+  }
+}

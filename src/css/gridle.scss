@@ -39,18 +39,18 @@
   flex-direction: column;
 }
 
+@mixin grid($size, $break) {
+  @if $size == 0 { @content } @else {
+    @include mq($from: $break) { @content }
+  }
+}
+
 @each $breakpoint in $mq-breakpoints {
 
   $break: nth($breakpoint, 1);
   $size: nth($breakpoint, 2);
 
-  @mixin grid {
-    @if $size == 0 { @content } @else {
-      @include mq($from: $break) { @content }
-    }
-  }
-
-  @include grid {
+  @include grid($size, $break) {
 
     @if $size == 0 { } @else {
       .grid {
@@ -79,7 +79,9 @@
       .cell-#{ $break },
       .cell-#{ $break }-#{ $i },
       .cell-#{ $break }-offset-#{ $i } {
-        @extend %make-cell;
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
       }
     }
 

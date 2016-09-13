@@ -1,0 +1,28 @@
+.service {
+  &-waxing {
+    $service-waxing-color: #b4b4b4;
+
+    .service {
+
+      &-title { background-color: rgba($service-waxing-color, .3); }
+
+      &-meta {
+        background-color: $service-waxing-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-waxing-color, .3);
+        color: #fff;
+        margin-bottom: 0;
+      }
+
+      &-inner-title { color: $service-waxing-color; }
+
+      &-btn-close {
+        background-color: rgba($service-waxing-color, 1);
+
+        &::before,
+        &::after { background: #fff; }
+      }
+
+      &-offer { margin-top: 1px; }
+    }
+  }
+}

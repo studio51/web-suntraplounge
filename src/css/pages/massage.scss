@@ -1,15 +1,19 @@
 .service {
   &-massage {
-    $service-tanning-color: #FACD86;
+    $service-massage-color: #dc7828;
 
     .service {
+      &-title {
+        background-color: rgba($service-massage-color, .3);
+      }
+
       &-meta {
-        background-color: $service-tanning-color;
-        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-tanning-color, .3);
+        background-color: $service-massage-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-massage-color, .3);
         color: #fff;
 
         .btn {
-          background-color: darken($service-tanning-color, 10%);
+          background-color: darken($service-massage-color, 10%);
           border-radius: ui(border_radius_size);
           color: #fff;
           display: inline-block;
@@ -21,7 +25,7 @@
     }
 
     &-benefit {
-      background-color: darken($service-tanning-color, 10%);
+      background-color: darken($service-massage-color, 10%);
       padding: ui(spacing) / 2;
 
       &-container {

@@ -1,0 +1,20 @@
+.service {
+  &-beauty {
+    $service-beauty-color: #d8d8d8;
+
+    .service {
+
+      &-title {
+        background-color: rgba($service-beauty-color, .3);
+      }
+
+      &-meta {
+        background-color: $service-beauty-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-beauty-color, .3);
+        color: #fff;
+      }
+
+      &-offer { margin-top: 1px; }
+    }
+  }
+}

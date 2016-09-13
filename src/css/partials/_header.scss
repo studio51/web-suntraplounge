@@ -3,7 +3,9 @@
   @at-root {
 
     .navbar {
-      background-color: rgba(255, 255, 255, .3);
+      // background-color: rgba(255, 255, 255, .3);
+      // background-color: #0A46E2;
+      // background-color: #2E1E11;
       position: fixed;
       opacity: 1;
       transition: opacity 1s ease-in,
@@ -13,36 +15,36 @@
       width: 100%;
       z-index: 5;
 
-      &-small {
-        background-color: ui(brand_color);
-        border-bottom: ui(border_radius_size) solid darken(ui(brand_color), 5%);
+      // &-small {
+      //   background-color: ui(brand_color);
+      //   border-bottom: ui(border_radius_size) solid darken(ui(brand_color), 5%);
 
-        .navbar {
-          &-brand {
+      //   .navbar {
+      //     &-brand {
 
-            @include mq($from: 'sm') { padding: (ui(spacing) / 2) 0; }
+      //       @include mq($from: 'sm') { padding: (ui(spacing) / 2) 0; }
 
-            &-image {
-              display: none;
+      //       &-image {
+      //         display: none;
 
-              &-small { display: block; }
-            }
-          }
+      //         &-small { display: block; }
+      //       }
+      //     }
 
-          &-link {
-            color: #fff;
+      //     &-link {
+      //       color: #fff;
 
-            &:hover { background-color: darken(ui(brand_color), 5%); }
-          }
+      //       &:hover { background-color: darken(ui(brand_color), 5%); }
+      //     }
 
-          @include mq($until: 'sm') {
-            &-trigger,
-            &-container {
-              &.opened { background-color: darken(ui(brand_color), 5%); }
-            }
-          }
-        }
-      }
+      //     @include mq($until: 'sm') {
+      //       &-trigger,
+      //       &-container {
+      //         &.opened { background-color: darken(ui(brand_color), 5%); }
+      //       }
+      //     }
+      //   }
+      // }
 
       &-brand {
         flex: 1;
@@ -50,17 +52,17 @@
 
         @include mq($until: 'sm') { padding-left: ui(spacing) / 2; }
 
-        img {
-          height: 100%;
-          transition: padding 4s linear;
-          width: 10em;
+        // img {
+        //   height: 100%;
+        //   transition: padding 4s linear;
+        //   width: 10em;
 
-          @include mq($until: 'sm') { padding: ui(spacing) / 2; }
-        }
+        //   @include mq($until: 'sm') { padding: ui(spacing) / 2; }
+        // }
 
-        &-image-small { display: none; }
+        // &-image-small { display: none; }
 
-        @include mq($from: 'sm') { padding: ui(spacing) 0; }
+        // @include mq($from: 'sm') { padding: ui(spacing) 0; }
       }
 
       // Trigger for Small Devices

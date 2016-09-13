@@ -8,13 +8,13 @@
       &-title {
         @extend .section-title;
 
-        font-size: 1.5em;
+        font-size: 2em !important;
       }
 
       &-phone {
         @extend .section-subtitle;
 
-        font-size: 1em;
+        font-size: 1em !important;
       }
 
       &-content { margin: (ui(spacing) / 2) 0; }

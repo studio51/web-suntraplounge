@@ -165,14 +165,15 @@ module.exports = function(grunt) {
         },
 
         files: {
+          // '<%= appConfig.dist_dir %>js/main.min.js': ['<%= appConfig.src_dir %>js/*.js'],
           '<%= appConfig.dist_dir %>js/card_circle.min.js': ['<%= appConfig.src_dir %>js/card_circle.js'],
           '<%= appConfig.dist_dir %>js/cash.min.js': ['<%= appConfig.src_dir %>js/cash.js'],
+          '<%= appConfig.dist_dir %>js/unveil.min.js': ['<%= appConfig.src_dir %>js/unveil.js'],
           '<%= appConfig.dist_dir %>js/gmaps.min.js': ['<%= appConfig.src_dir %>js/gmaps.js'],
           '<%= appConfig.dist_dir %>js/main.min.js': ['<%= appConfig.src_dir %>js/main.js'],
           '<%= appConfig.dist_dir %>js/scroll_to_plugin.min.js': ['<%= appConfig.src_dir %>js/scroll_to_plugin.js'],
           '<%= appConfig.dist_dir %>js/trianglify.min.js': ['<%= appConfig.src_dir %>js/trianglify.js'],
-          '<%= appConfig.dist_dir %>js/tween-max.min.js': ['<%= appConfig.src_dir %>js/tween-max.js'],
-          '<%= appConfig.dist_dir %>js/velocity.min.js': ['<%= appConfig.src_dir %>js/velocity.js']
+          '<%= appConfig.dist_dir %>js/tween-max.min.js': ['<%= appConfig.src_dir %>js/tween-max.js']
         }
       }
     },
@@ -285,5 +286,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['clean', 'preview']);
   grunt.registerTask('prepare', ['clean', 'compile-theme', 'prettify']);
-  grunt.registerTask('deploy', ['ship', 'ftp-deploy'])
+  grunt.registerTask('deploy', ['prepare', 'ftp-deploy'])
 }

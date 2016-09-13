@@ -7,13 +7,14 @@
         clippath#massagePath
           polygon.clip(points='0, 1280 0, 0 1920, 0 1920, 1280')
 
-      image(clip-path='url(#massagePath)', width='1920', height='1280', xlink:href='img/categories/massage.jpg')
+      image.lazy(clip-path='url(#massagePath)', width='1920', height='1280', xlink:href='img/categories/massage.jpg')
 
     .grid
       .service-content
-        .service-body
-          i.service-btn-close
+        h1.service-inner-title Massage Therapy
+        i.service-btn-close
 
+        .service-body
           .service-caption
             .service-caption-description
               p.
@@ -35,15 +36,15 @@
 
             .service-meta-content
               p.
-                Massage therapy is more than relaxing me-time. Studies continue to prove the physical, and emotional benefits of even a single massage therapy session. As the number of proven health benefits grows, so do the number of Americans who turn to Massage Envy for a more balanced lifestyle. In fact, we've provided over 50 million therapeutic massages nationwide. That's a lot of happy, healthy customers.
+                Massage therapy is more than relaxing me-time. Studies continue to prove the physical, and emotional benefits of even a single massage therapy session. As the number of proven health benefits grows, so do the number of clients who turn to Massage therapy for a more balanced lifestyle.
 
             a.btn.btn-action(href='#', data-target='#service-massage-benefits') Learn More..
 
             include massage-benefits
 
           .row.service-copy
-            .cell-sm-4.mr
-              img.img-responsive(src='img/massage-deep-tissue.jpg', title='Deep Tissue Massage', alt='Deep Tissue Massage')
+            .cell-sm-4.image-cover.mb-sm.mr
+              img.lazy.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', data-src='img/massage-deep-tissue.jpg', title='Deep Tissue Massage', alt='Deep Tissue Massage')
 
             .cell-sm
               h2.service-copy-title Deep Tissue Massage
@@ -57,12 +58,12 @@
                 p Tailor made to suit the individual needs of the client.
 
               .service-offer
-                h3.service-offer-title 1 hour £35.00
-                span.service-offer-info Introductory price £25.00 and £20 for 1/2hour
+                h3.service-offer-title 1 hour £35.00 or 30 minutes £20
+                span.service-offer-info Introductory price 1 hour £25.00
 
           .row.service-copy
-            .cell-sm-4.mr
-              img.img-responsive(src='img/massage-hot-stone.jpg', title='Hot Stone Massage', alt='Hot Stone Massage')
+            .cell-sm-4.image-cover.mb-sm.mr
+              img.lazy.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', data-src='img/massage-hot-stone.jpg', title='Relaxing Full Body Massage', alt='Relaxing Full Body Massage')
 
             .cell-sm
               h2.service-copy-title Relaxing Full Body Massage
@@ -76,12 +77,12 @@
                 p Relaxes your body, mind and spirit.
 
               .service-offer
-                h3.service-offer-title 1 hour £35.00
-                span.service-offer-info Introductory price £25.00
+                h3.service-offer-title 1 hour £35.00 or 30 minutes £20
+                span.service-offer-info Introductory price 1 hour £25.00
 
           .row.service-copy
-            .cell-sm-4.mr
-              img.img-responsive(src='img/massage-full-body.jpg', title='Hot Stone Massage', alt='Hot Stone Massage')
+            .cell-sm-4.image-cover.mb-sm.mr
+              img.lazy.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', data-src='img/massage-full-body.jpg', title='Hot Stone Massage', alt='Hot Stone Massage')
 
             .cell-sm
               h2.service-copy-title Hot Stone Therapy Massage
@@ -98,12 +99,12 @@
                   well as eliminating negative energy withing the body, mind &amp; soul.
 
               .service-offer
-                h3.service-offer-price 1 hour £35.00
-                span.service-offer-info Introductory price £25.00
+                h3.service-offer-title 1 hour £35.00 or 30 minutes £20
+                span.service-offer-info Introductory price 1 hour £25.00
 
           .row.service-copy
-            .cell-sm-4.mr
-              img.img-responsive(src='img/massage-mother-to-be.jpg', title='Mother to be Massage', alt='Mother to be Massage')
+            .cell-sm-4.image-cover.mb-sm.mr
+              img.lazy.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', data-src='img/massage-mother-to-be.jpg', title='Mother to be Massage', alt='Mother to be Massage')
 
             .cell-sm
               h2.service-copy-title Mother to be Massage
@@ -119,5 +120,5 @@
                   swelling. Taior made to suit the individual needs of the client.
 
               .service-offer
-                h3.service-offer-title 1 hour £35.00
-                span.service-offer-info Introductory price £25.00
+                h3.service-offer-title 1 hour £35.00 or 30 minutes £20
+                span.service-offer-info Introductory price 1 hour £25.00

@@ -47,10 +47,10 @@ var demo = (function(window, undefined) {
     var pattern = Trianglify({
       width: window.innerWidth,
       height: window.innerHeight,
-      cell_size: 90,
+      cell_size: 60,
       variance: 1,
       stroke_width: 1,
-      x_colors: 'Purples'
+      x_colors: ['#221D52', '#CDE7EA', '#221D52']
     }).svg(); // Render as SVG.
 
     _mapPolygons(pattern);
@@ -270,7 +270,8 @@ function getUserLocation() {
 	}
 }
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
+  jQuery('.lazy').unveil();
 
 	var map = new GMaps({
 		el: '#map',
@@ -290,7 +291,7 @@ $(document).ready(function() {
 		jQuery('.navbar').toggleClass('navbar-small', jQuery(document).scrollTop() > 0);
 	});
 
-	jQuery('.navbar-trigger').on('click', function(event) {
+	jQuery('.btn-action').on('click', function(event) {
 		event.preventDefault();
 
 		var target = jQuery(this).data('target');

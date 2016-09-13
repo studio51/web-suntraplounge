@@ -1,38 +1,74 @@
+section {
+  background-color: ui(body_color);
+}
+
 .jumbotron {
-  height: 85vh;
-  background-image: url('../img/slider.jpg');
-  background-size: cover;
-  background-position: center bottom;
-  padding: ui(spacing);
+  height: 110vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  position: relative;
 
-  @include mq($from: 'sm') {
-    height: 79vh;
-    padding: 0;
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url('../img/slider.jpg') no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    position: fixed;
+    will-change: transform;
+    z-index: -1;
   }
 
-  .grid { align-items: center; }
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(#AACFBE, .7);
+    z-index: 2;
+  }
+
+  .waves {
+    width: calc(100% + 4px);
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-bottom: -4px;
+    z-index: 3;
+  }
+
+  // @include mq($from: 'sm') {
+  //   height: 79vh;
+  //   padding: 0;
+  // }
+
+  // .grid { align-items: center; }
 }
-
-.accreditation {
-  @extend .align-center;
-  @extend .align-middle;
-
-  &:first-child { @extend .align-top; }
-  &:last-child { @extend .align-bottom; }
-
-  &s {
-    background-color: #fff;
-    height: 15vh;
-    padding: ui(spacing);
-
-    @include mq($from: 'sm') {
-      height: 21vh;
-      padding: ui(spacing) 0;
-    }
-  }
-
-  img {
-    filter: grayscale(100%);
-    width: calc(100% - #{ui(spacing)});
-  }
-}
+//
+// .accreditation {
+//   @extend .align-center;
+//   @extend .align-middle;
+//
+//   &:first-child { @extend .align-top; }
+//   &:last-child { @extend .align-bottom; }
+//
+//   &s {
+//     padding-top: ui(spacing) - 10px;
+//     // background-color: #fff;
+//     // height: 15vh;
+//     // padding: ui(spacing);
+//
+//     @include mq($from: 'sm') {
+//       // height: 21vh;
+//       // padding: ui(spacing) 0;
+//     }
+//   }
+//
+//   img {
+//     filter: grayscale(100%);
+//     width: calc(100% - #{ui(spacing)});
+//   }
+// }

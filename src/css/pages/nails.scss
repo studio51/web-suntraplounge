@@ -1,0 +1,18 @@
+.service {
+  &-nails {
+    $service-nails-color: #f0dcdc;
+
+    .service {
+
+      &-title {
+        background-color: rgba($service-nails-color, .3);
+      }
+
+      &-meta {
+        background-color: $service-nails-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-nails-color, .3);
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,43 +1,44 @@
 .about {
+  .accreditation { width: 100%; }
 
-  &-image {
-    $image-size: 200px;
-
-    border-radius: 100%;
-    display: block;
-    height: $image-size;
-    margin: 0 auto;
-    width: 200px;
-
-    @include mq($until: 'sm') {
-      margin-bottom: ui(spacing);
-      width: $image-size;
-    }
-  }
-
-  &-content {
+  &-inner {
     background-color: #fff;
     border-radius: ui(border_radius_size);
     padding: ui(spacing);
+    margin: ui(spacing);
+    text-align: center;
 
-    @include mq($from: 'sm') {
-      [class*='cell']:last-child { margin-left: ui(spacing); }
+    @include mq($from: 'sm') { text-align: left; }
+
+    &-image {
+      $image-size: 230px;
+
+      align-self: flex-start;
+      border-radius: 100%;
+      height: $image-size;
+      width: $image-size;
     }
-  }
 
-  .about-title {
-    @extend .section-title;
+    &-content {
+      margin: ui(spacing) 0;
 
-    font-size: 1.8em;
+      @include mq($from: 'sm') { margin: 0 0 ui(spacing) ui(spacing); }
+    }
 
-    @include mq($until: 'sm') {
-      align-self: center;
-      text-align: center;
+    &-title {
+      // @extend .section-title;
 
-      &::after {
-        left: 0;
-        right: 0;
-        margin: auto;
+      font-size: 1.8em;
+
+      @include mq($until: 'sm') {
+        align-self: center;
+        text-align: center;
+
+        &::after {
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
       }
     }
   }

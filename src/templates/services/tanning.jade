@@ -2,6 +2,8 @@
   h1.service-title Tanning
 
   .service-container.service-container--closed
+    .card-trigger
+
     svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 1200', preserveaspectratio='xMidYMid slice')
       defs
         clippath#tanningPath
@@ -11,9 +13,10 @@
 
     .grid
       .service-content
-        .service-body
-          i.service-btn-close
+        h1.service-inner-title Tanning &amp; UV Free Tanning
+        i.service-btn-close
 
+        .service-body
           .service-caption
             .service-caption-description
               p.
@@ -28,15 +31,15 @@
                 tan.
 
               p.
-                Sunbed prices are £1.50 for 3 minutes or take advantage of our
-                special offers. Sunbed course 60 minutes for £20.
+                Sunbed prices are <strong>£1.50 for 3 minutes</strong> or take advantage of our
+                special offers. Sunbed course <strong>60 minutes for £20.</strong>
 
               .alert.alert-info
-                p We encourage safe and responsible tanning in a supervised environment.
+                p We encourage safe and responsible tanning in a supervised environment!
 
           .row.service-meta
-            .cell-sm-2.mr
-              img.img-responsive(src='img/tanning-protan.jpg', title='Tanning Pro Tan', alt='Tanning Pro Tan')
+            .cell-sm-2.image-cover.mb-sm.mr
+              img.lazy.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', data-src='img/tanning-protan.jpg', title='Tanning Pro Tan', alt='Tanning Pro Tan')
 
             .cell-sm
               h2.service-meta-title.
@@ -53,8 +56,8 @@
                   p.service-offer-title Prices start at just £1.00
 
           .row.service-copy
-            .cell-sm-6.mr
-              img.img-responsive(src='img/tanning-urban-tan-add.jpg', title='UV Free Tanning by Urban Tan', alt='UV Free Tanning by Urban Tan')
+            .cell-sm-6.image-cover.mb-sm.mr
+              img.lazy.img-responsive(src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', data-src='img/tanning-urban-tan-add.jpg', title='UV Free Tanning by Urban Tan', alt='UV Free Tanning by Urban Tan')
 
             .cell-sm
               h2.service-copy-title UV Free Tanning
@@ -71,7 +74,7 @@
                   blends to suit every skin tone.
 
                 p.
-                  Our experienced and educated therapist will carry out a
+                  Our experienced therapist will carry out a
                   consultation, carefully selecting and blending the required shade
                   before applying your flawless tan.
 

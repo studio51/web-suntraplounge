@@ -3,10 +3,22 @@
     $service-tanning-color: #55B3FF;
 
     .service {
+
+      &-title {
+        background-color: rgba($service-tanning-color, .3);
+      }
+
       &-meta {
         background-color: $service-tanning-color;
         box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-tanning-color, .3);
         color: #fff;
+      }
+
+      &-btn-close {
+        background-color: rgba($service-tanning-color, 1);
+
+        &::before,
+        &::after { background: #fff; }
       }
     }
   }

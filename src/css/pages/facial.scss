@@ -1,0 +1,18 @@
+.service {
+  &-facial {
+    $service-facial-color: #f0f0f0;
+
+    .service {
+
+      &-title {
+        background-color: rgba($service-facial-color, .3);
+      }
+
+      &-meta {
+        background-color: $service-facial-color;
+        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-facial-color, .3);
+        color: #fff;
+      }
+    }
+  }
+}

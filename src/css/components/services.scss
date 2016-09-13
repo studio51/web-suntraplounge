@@ -1,12 +1,293 @@
 section {
 
-  &.about,
-  &.elemis,
-  &.team { padding: ui(spacing); }
-
-  &.elemis,
-  &.testimonials { background-color: #fff; }
+  // &.about,
+  // &.elemis,
+  // &.team { padding: ui(spacing); }
+  //
+  // &.elemis,
+  // &.testimonials { background-color: #fff; }
 }
+
+.service {
+
+  &-title {
+    @extend .align-center;
+    @extend .align-middle;
+
+    @extend .font-typeTwo;
+
+    border: (ui(spacing) / 2) solid transparent;
+    color: #fff;
+    margin: ui(spacing);
+    z-index: 15;
+  }
+}
+
+.service {
+  display: flex;
+  flex: 1;
+  position: relative;
+
+  &s {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &-container {
+    height: 100%;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    -webkit-overflow-scrolling: touch;
+
+    &--closed {
+      position: absolute;
+      overflow: hidden;
+
+      .service {
+        &-btn {
+          &-close { display: none; }
+        }
+      }
+    }
+  }
+
+  &-content {
+    height: 100vh;
+    position: relative;
+    width: 100%;
+  }
+
+  &-inner-title {
+    @extend .font-typeTwo;
+
+    color: #fff;
+    display: inline-block;
+    font-size: 2em;
+    padding: (ui(spacing) * 2) ui(spacing);
+    text-transform: uppercase;
+
+    @include mq($from: 'sm') {
+      font-size: 2.5em;
+      padding: (ui(spacing) * 2) 0;
+    }
+  }
+
+  &-body {
+    background-color: #fff;
+    border-radius: ui(border_radius_size);
+    padding: ui(spacing);
+    margin-bottom: ui(spacing);
+  }
+
+  &-btn {
+    &-close {
+      background-color: rgba(white, .2);
+      border-radius: 100%;
+      cursor: pointer;
+      padding: ui(spacing);
+      position: absolute;
+      right: ui(spacing);
+      top: calc(#{ui(spacing)} + 8px);
+
+      @include mq($from: 'sm') { right: 0; }
+
+      &::before,
+      &::after {
+        background: rgba(white, .5);
+        border-radius: ui(border_radius_size);
+        content: '';
+        height: ui(border_radius_size);
+        position: absolute;
+        right: ui(spacing) / 2;
+        width: 50%;
+      }
+
+      &::before { transform: rotate(45deg); }
+      &::after { transform: rotate(-45deg); }
+    }
+  }
+
+  &-copy {
+    &-title { margin-bottom: ui(spacing) / 2; }
+  }
+
+  &-meta {
+    margin: ui(spacing) 0;
+    padding: ui(spacing);
+
+    &-title { margin-bottom: ui(spacing) / 2; }
+  }
+
+  &-offer {
+    background-color: #f7ecb5;
+    color: darken(#f7ecb5, 50%);
+    border-radius: ui(border_radius_size);
+    display: flex;
+    flex-direction: column;
+    margin-top: ui(spacing) / 2;
+    padding: (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) + (ui(spacing) / 2));
+    position: relative;
+
+    &::before {
+      align-items: center;
+      bottom: 0;
+      content: '£';
+      color: darken(#f7ecb5, 50%);
+      display: flex;
+      font-size: 22px;
+      left: 0;
+      padding: ui(spacing) / 2;
+      position: absolute;
+      top: 0;
+    }
+
+    &-title {
+
+    }
+
+    &-info {
+      display: flex;
+      flex: 1;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+  }
+}
+
+
+
+.body--hidden {
+  .pattern {
+    visibility: visible;
+  }
+
+  .service-title {
+    display: none;
+  }
+}
+
+// .service-title {
+  // padding: 0;
+// }
+.img-responsive  {
+/*  height: auto; */
+ width: 100%;
+}
+.service-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.service-container--closed .service-image {
+  position: relative;
+  cursor: pointer;
+}
+/* Fix IE */
+
+.service-container--fix-image .service-image {
+  position: fixed;
+}
+
+.service-container--closed .service-content {
+  margin-top: 0;
+  padding: 0 16px;
+  pointer-events: none;
+  background: transparent;
+}
+
+.service-container--closed .card__caption {
+  font-size: 1em;
+  max-width: auto;
+  padding: 10px 10px 25px;
+  transform: translateY(-100%);
+}
+
+
+.service-meta img {
+  border-radius: 100%;
+  margin-right: 16px;
+}
+
+.alert {
+  padding: 16px;
+  margin-top: 16px;
+  border-radius: 3px;
+}
+
+.service-copy ~ .service-copy {
+  margin-top: 32px;
+}
+
+
+
+.service-content {
+  &-title {
+    margin-bottom: 16px;
+  }
+}
+
+
+/* PATTERN */
+
+.pattern {
+  position: fixed;
+  visibility: hidden;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: no-repeat center center / cover;
+}
+
+.pattern--hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.pattern--hidden .polygon {
+  transition-duration: 0ms;
+}
+
+.pattern svg {
+  width: 100%;
+  height: 100%;
+}
+
+.polygon {
+  transition: -webkit-transform 300ms ease-in-out, opacity 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+
+.polygon--hidden {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+/* disable scale on firefox */
+
+.ff .polygon {
+  -webkit-transform: scale(1)!important;
+  transform: scale(1)!important;
+}
+
+//
 
 @import '../pages/tanning';
 @import '../pages/massage';

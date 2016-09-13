@@ -1,44 +1,60 @@
 .service.service-facial
-  h1.service-title.
-    Facial
+  h1.service-title Facial
 
   .service-container.service-container--closed
-    svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1920 1280', preserveaspectratio='xMidYMid slice')
+    svg.service-image(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 1024 681', preserveaspectratio='xMidYMid slice')
       defs
         clippath#facialPath
-          polygon.clip(points='0, 1280 0, 0 1920, 0 1920, 1280')
+          polygon.clip(points='0, 681 0, 0 1024, 0 1024, 681')
 
-      image(clip-path='url(#facialPath)', width='1920', height='1280', xlink:href='img/categories/facial.jpg')
+      image(clip-path='url(#facialPath)', width='1024', height='681', xlink:href='img/categories/facial.png')
 
     .grid
       .service-content
-          i.fa.fa-times.service-btn-close
+        h1.service-inner-title Microdermabrasion Facial
+        i.service-btn-close
 
-        .service-caption
-          h2.service-caption-title Tanning
-          p.service-caption-subtitle A modern day love story
+        .service-body
+          .service-caption.mb
+            .service-caption-description
+              p.
+                The SkinBase Microdermabrasion Facial is a safe, controlled treatment that intensely exfoliates &amp;resurfaces the skin for complete skin rejuvenation.
 
-        .service-copy
+              p.
+                A fine jet of abrasive crystals gently removes dead skin cells layer by layer &amp; a vacuum action lifts away the debris, stimulating the blood flow and encouraging collagen &amp; elastin formulation that results in firmer, revitalised and youthful looking skin.
 
-          h3
-            | Pro-Intense Lift Effect Facial 1 hour £55.00
+              p.
+                Wrinkles disappear, acne scarring is reduced and dull &amp; tired skin is completely banished. Results can be seen after just one treatment!
 
-          p
-            | Powerfull lifting techniques target sagging jowls, cheeks, chin and neck
-            | for the ultimate lift effect.
+          .row.service-copy
+            .cell-sm-4.mr
+              img.img-responsive(src='img/facial-before-after.jpg', title='SkinBase Microdermabrasion Facial Before &amp; After', alt='SkinBase Microdermabrasion Facial Before &amp; After')
 
-          p
-            | Powered by breakthrough technology that combines cutting edge plant skin
-            | ceus, nutrient rich natural lipids &amp; firming plant actives. Powerfull
-            | lifting techniques target sagging jowls, cheeks, chin &amp; neck whilst
-            | helping to reduce puffiness &amp; fluid retention associated with
-            | sagging skin.
+            .cell-sm
+              h2.service-copy-title SkinBase Microdermabrasion targets
 
-          h3
-            | Pro-Intense Lift Effect Facial 1 hour £55.00
-          p
-            |
-            |
-            |
-            |
+              ul
+                li Acne &amp; Acne Scarring
+                li Fine lines &amp; Forehead Wrinkles
+                li Ageing Skin
+                li Dull &amp; Tired Skin
+                li Uneven Skin tone, Brown Spots &amp; Blotching
+                li Pigmentation &amp; Blemishes
+                li Stretch Marks
 
+          .alert.alert-info
+            p Each treatment lasts for 30 minutes and can be used on any area of face and body.
+
+          .row.service-meta
+            .cell-sm
+              h2.service-meta-title £10 off your first treatment!
+
+              .service-meta-content
+                p.
+                  Book now and receive your first SkinBase MD Facial for just £20 (normally £30). We guarantee you will be amazed by the results after just one treatment and will leave the salon with your skin smooth with a youthful and radiant glow.
+
+                p.
+                  Our highly trained therapists will perform an initial consultation prior to the treatment to analyse your skin and assess your individual requirements. For some clients just a one off booster facial will be sufficient whereas for more problematic skin a course of treatments may be recommended.
+
+                .service-offer
+                  h3.service-offer-title £30 or course of 5 sessions £125 ( to be taken every 7-10 days )
