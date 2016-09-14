@@ -1,9 +1,5 @@
-section {
-  background-color: ui(body_color);
-}
-
 .jumbotron {
-  height: 110vh;
+  height: 102vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -13,9 +9,8 @@ section {
     content: '';
     width: 100%;
     height: 100%;
-    background: url('../img/slider.jpg') no-repeat;
+    background: url('../img/slider.jpg') no-repeat bottom center;
     background-size: cover;
-    background-position: bottom center;
     position: fixed;
     will-change: transform;
     z-index: -1;
@@ -34,41 +29,7 @@ section {
 
   .waves {
     width: calc(100% + 4px);
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -4px;
-    z-index: 3;
+    margin: 0 -2px -4px -2px;
+    z-index: 6;
   }
-
-  // @include mq($from: 'sm') {
-  //   height: 79vh;
-  //   padding: 0;
-  // }
-
-  // .grid { align-items: center; }
 }
-//
-// .accreditation {
-//   @extend .align-center;
-//   @extend .align-middle;
-//
-//   &:first-child { @extend .align-top; }
-//   &:last-child { @extend .align-bottom; }
-//
-//   &s {
-//     padding-top: ui(spacing) - 10px;
-//     // background-color: #fff;
-//     // height: 15vh;
-//     // padding: ui(spacing);
-//
-//     @include mq($from: 'sm') {
-//       // height: 21vh;
-//       // padding: ui(spacing) 0;
-//     }
-//   }
-//
-//   img {
-//     filter: grayscale(100%);
-//     width: calc(100% - #{ui(spacing)});
-//   }
-// }

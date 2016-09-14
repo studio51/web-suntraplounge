@@ -1,27 +1,27 @@
 nav.navbar
+
   .grid
-    .row
-      .cell-md-7
-        .row.navbar-brand-container
-          img(src="img/elemis-logo-small.png", title="Elemis", alt="Elemis", height="50")
+    .row.navbar-inner
 
-          h3
-            a.navbar-brand(href='http://suntraplounge.co.uk', title!= suntrap)
-              != suntrap
-            //- img.navbar-brand-image(src='img/suntrap-blue.svg', alt!= suntrap, title!= suntrap)
-            //- img.navbar-brand-image-small(src='img/suntrap.svg', alt!= suntrap, title!= suntrap)
+      h1.navbar-brand-container
+        a.navbar-brand(href='http://suntraplounge.co.uk', title!= suntrap)
+          != suntrap
 
-          a.navbar-trigger.btn-action(href='#', data-target='#navbar', aria-label='Toggle Navigation')
-            span.lines
+      button.navbar-trigger
+        .navbar-trigger-icon
+          span
+          span
+          span
+          span
+          span
+          span
 
-      .cell-xs-12.cell-md-5.align-md-right
-        #navbar.row.navbar-container
-          ul.navbar-items-container
-            li.navbar-item
-              a.navbar-link(href='#services', title='Our services') Services
+      ul#navbar-menu.navbar-menu
+        li.navbar-menu-item
+          a.navbar-link(href='#services', title='Our Services', class='navbar-menu-link') Services
 
-            li.navbar-item
-              a.navbar-link(href='#elemis', title='Our Elemis services &amp; Products') Elemis
+        li.navbar-menu-item
+          a.navbar-link(href='#elemis', title='Our Elemis Services &amp; Products', class='navbar-menu-link') Elemis
 
-            li.navbar-item
-              a.navbar-link(href='#footer', title='Get in touch with us') Contact
+        li.navbar-menu-item
+          a.navbar-link(href='#footer', title='Get in touch with us', class='navbar-menu-link') Contact
