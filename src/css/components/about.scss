@@ -8,7 +8,15 @@
     margin: ui(spacing);
     text-align: center;
 
-    @include mq($from: 'sm') { text-align: left; }
+    @include mq($from: 'sm') {
+      text-align: left;
+      padding: ui(spacing) * 2;
+      margin: ui(spacing) 0;
+    }
+
+    @include mq($from: 'sm') {
+      margin: (ui(spacing) * 2) 0;
+    }
 
     &-image {
       $image-size: 230px;
@@ -22,13 +30,12 @@
     &-content {
       margin: ui(spacing) 0;
 
-      @include mq($from: 'sm') { margin: 0 0 ui(spacing) ui(spacing); }
+      @include mq($from: 'sm') { margin: 0 0 (ui(spacing) * 2) (ui(spacing) * 2); }
     }
 
     &-title {
-      // @extend .section-title;
-
       font-size: 1.8em;
+      margin-bottom: ui(spacing);
 
       @include mq($until: 'sm') {
         align-self: center;
