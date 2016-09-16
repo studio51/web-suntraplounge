@@ -1,20 +1,41 @@
-.service {
-  &-beauty {
-    $service-beauty-color: #d8d8d8;
+.beauty {
+  .alert { background-color: $service-beauty-color; }
 
-    .service {
+  .service {
+    &-category--title {
+      background-color: rgba($service-beauty-color, .5);
 
-      &-title {
-        background-color: rgba($service-beauty-color, .3);
+			&:before { background-color: $service-beauty-color }
+    }
+
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-beauty-color, 1), rgba($service-beauty-color, 0));
+        }
+
+        &--caption { border-color: $service-beauty-color; }
+
+        &--meta {
+          &-section {
+
+            &.poper {
+              background-color: $service-beauty-color;
+              box-shadow: 6px 6px 0 0 rgba($service-beauty-color, .5);
+            }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-beauty-color; }
+            }
+          }
+        }
       }
-
-      &-meta {
-        background-color: $service-beauty-color;
-        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-beauty-color, .3);
-        color: #fff;
-      }
-
-      &-offer { margin-top: 1px; }
     }
   }
 }

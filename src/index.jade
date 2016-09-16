@@ -20,10 +20,8 @@ html(lang='en')
       include templates/header
 
     main.main
-      .pattern.pattern--hidden
 
       .jumbotron
-        
         .waves
           svg#suntrap-waves(viewbox='0 0 862 154', preserveAspectRatio='xMidYMax meet', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
             path#4(d='M0.489631653,34.3646836 C0.489631653,34.3646836 21.4207662,38.834912 49.2550087,34.3646836 C78.5628745,29.6577888 90.4441452,15.9982219 145.870865,15.9982219 C205.874992,15.9982219 248.966415,70.0189099 327.7742,70.0189099 C406.581985,70.0189099 468.890625,27.5362229 534.836182,27.5362229 C600.781738,27.5362229 638.594666,51.2580914 753.095886,53.991734 C823.156222,55.6643792 861.60157,7.72081944 861.60157,7.72081944 L861.60157,153.999994 L0.489631653,153.999994 L0.489631653,34.3646836 Z', fill-opacity='0.800000012', fill='#AACFBE', sketch:type='MSShapeGroup')
@@ -37,52 +35,105 @@ html(lang='en')
       section#about.about
         include templates/about
 
-      section#services.services
-      
-        .row
-          .cell-xs-12.cell-md-3
-            include templates/services/tanning
-          
-          .cell-xs-12.cell-md-6
-            .row
-              .cell-xs-12.cell-md-6
-                include templates/services/waxing
-              
-              .cell-xs-12.cell-md-6
-                include templates/services/vibraxis
-              
-            .row
-              .cell-xs-12
-                include templates/services/beauty
-              
-          .cell-xs-12.cell-md-3
-            include templates/services/massage
-            
-        .row
-          .cell-xs-12.cell-md-3
-            include templates/services/facial
-            
-          .cell-xs-12.cell-md-6
-            include templates/services/nails
-            
-          .cell-xs-12.cell-md-3
-            include templates/services/aestethic
-      
-        //- .row
-        //-   .cell-xs-12.cell-md-3
-        //- 
-        //-   .cell-xs-12.cell-md-3
-        //- 
-        //-   .cell-xs-12.cell-md-3
-        //-     
-        //-   .cell-xs-12.cell-md-3
-        //-     
-        //-   .cell-xs-12.cell-md-3
-        //- 
-        //-   .cell-xs-12.cell-md-6
-        //- 
-        //-   .cell-xs-12.cell-md-3
+      section#grid3d.services.services--vertical
 
+        .services--categories-wrapper
+          .services--categories-inner
+            
+            .row
+              .cell-xs-12.cell-md-3.service-category.tanning(data-target='tanning', style='background-image: url(img/categories/tanning.jpg)')
+                img(src='img/categories/tanning.jpg')
+                h1.service-category--title Tanning
+              
+              .cell-xs-12.cell-md-6
+                .row
+                  .cell-xs-12.cell-md-6.service-category.waxing(data-target='waxing', style='background-image: url(img/categories/waxing.png)')
+                    img(src='img/categories/waxing.png')
+                    h1.service-category--title Lycon Waxing
+                  
+                  .cell-xs-12.cell-md-6.service-category.vibraxis(data-target='vibraxis', style='background-image: url(img/categories/vibraxis.jpg)')
+                    img(src='img/categories/vibraxis.jpg')
+                    h1.service-category--title Vibraxis
+                  
+                .row
+                  .cell-xs-12.service-category.beauty(data-target='beauty', style='background-image: url(img/categories/beauty.jpg)')
+                    img(src='img/categories/beauty.jpg')
+                    h1.service-category--title Beauty
+                
+              .cell-xs-12.cell-md-3.service-category.massage(data-target='massage', style='background-image: url(img/categories/massage.jpg)')
+                img(src='img/categories/massage.jpg')
+                h1.service-category--title Massage
+                
+            .row
+              .cell-xs-12.cell-md-3.service-category.facial(data-target='facial', style='background-image: url(img/categories/facial.png)')
+                img(src='img/categories/facial.png')
+                h1.service-category--title Facial
+                
+              .cell-xs-12.cell-md-6.service-category.nails(data-target='nails', style='background-image: url(img/categories/nails.jpg)')
+                img(src='img/categories/nails.jpg')
+                h1.service-category--title Manicure, Pedicure &amp; Nail Technology
+                
+              .cell-xs-12.cell-md-3.service-category.aestethic(data-target='aestethic', style='background-image: url(img/categories/aestethic.jpg)')
+                img(src='img/categories/aestethic.jpg')
+                h1.service-category--title Aestethic
+                    
+        .services--content
+          
+          - var tanning   = { name: 'tanning', format: 'jpg', title: 'Massage Therapy' }
+          - var waxing    = { name: 'waxing', format: 'png', title: 'Lycon Waxing' }
+          - var vibraxis  = { name: 'vibraxis', format: 'jpg', title: 'Vibraxis' }
+          - var beauty    = { name: 'beauty', format: 'jpg', title: 'Beauty' }
+          - var massage   = { name: 'massage', format: 'jpg', title: 'Massage' }
+          - var facial    = { name: 'facial', format: 'png', title: 'SkinBase Facial' }
+          - var nails     = { name: 'nails', format: 'jpg', title: 'Manicure, Pedicure &amp; Nail Technology' }
+          - var aestethic = { name: 'aestethic', format: 'jpg', title: 'Aestethic' }
+          
+          each service in [tanning, waxing, vibraxis, beauty, massage, facial, nails, aestethic]
+            
+            .service-content--page(style="background-image: url(img/categories/#{service.name}.#{service.format})", id="#{service.name}", class="#{service.name}")
+              .grid
+                
+                .service-content--page--inner
+                  .service-content--page--header
+                    h1.service-content--page--title #{service.title}
+                    
+                    span.close-page
+
+                      svg(width='60px', height='60px', viewbox='0 0 60 60', xmlns='http://www.w3.org/2000/svg')
+                        g(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                          g.circle(sketch:type='MSLayerGroup', transform='translate(-13.000000, -13.000000)', fill='#D8D8D8')
+                            path(d='M40,40 L25.0036812,40 C23.3498463,40 22,41.3431458 22,43 C22,44.6534829 23.3447939,46 25.0036812,46 L40,46 L40,60.9963188 C40,62.6501537 41.3431458,64 43,64 C44.6534829,64 46,62.6552061 46,60.9963188 L46,46 L60.9963188,46 C62.6501537,46 64,44.6568542 64,43 C64,41.3465171 62.6552061,40 60.9963188,40 L46,40 L46,25.0036812 C46,23.3498463 44.6568542,22 43,22 C41.3465171,22 40,23.3447939 40,25.0036812 L40,40 Z M17.0192379,28 C8.73496664,42.3487787 13.6512213,60.6964909 28,68.9807621 C42.3487787,77.2650334 60.6964909,72.3487787 68.9807621,58 C77.2650334,43.6512213 72.3487787,25.3035091 58,17.0192379 C43.6512213,8.73496664 25.3035091,13.6512213 17.0192379,28 Z', sketch:type='MSShapeGroup', transform='translate(43.000000, 43.000000) rotate(-45.000000) translate(-43.000000, -43.000000) ')
+
+                  .service-content--page--body
+                  
+                    case service.name
+                      when 'tanning'
+                        include templates/services/tanning
+                      when 'waxing'
+                        include templates/services/waxing
+                      when 'vibraxis'
+                        include templates/services/vibraxis
+                      when 'beauty'
+                        include templates/services/beauty
+                      when 'massage'
+                        include templates/services/massage
+                      when 'facial'
+                        include templates/services/facial
+                      when 'nails'
+                        include templates/services/nails
+                      when 'aestethic'
+                        include templates/services/aestethic
+
+          span.loading
+          
+            // By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL
+            svg(width='140', height='64', viewbox='0 0 140 64', xmlns='http://www.w3.org/2000/svg', fill='#CC514C')
+              path(d='M30.262 57.02L7.195 40.723c-5.84-3.976-7.56-12.06-3.842-18.063 3.715-6 11.467-7.65 17.306-3.68l4.52 3.76 2.6-5.274c3.717-6.002 11.47-7.65 17.305-3.68 5.84 3.97 7.56 12.054 3.842 18.062L34.49 56.118c-.897 1.512-2.793 1.915-4.228.9z', fill-opacity='.5')
+                animate(attributename='fill-opacity', begin='0s', dur='1.4s', values='0.5;1;0.5', calcmode='linear', repeatcount='indefinite')
+              path(d='M105.512 56.12l-14.44-24.272c-3.716-6.008-1.996-14.093 3.843-18.062 5.835-3.97 13.588-2.322 17.306 3.68l2.6 5.274 4.52-3.76c5.84-3.97 13.592-2.32 17.307 3.68 3.718 6.003 1.998 14.088-3.842 18.064L109.74 57.02c-1.434 1.014-3.33.61-4.228-.9z', fill-opacity='.5')
+                animate(attributename='fill-opacity', begin='0.7s', dur='1.4s', values='0.5;1;0.5', calcmode='linear', repeatcount='indefinite')
+              path(d='M67.408 57.834l-23.01-24.98c-5.864-6.15-5.864-16.108 0-22.248 5.86-6.14 15.37-6.14 21.234 0L70 16.168l4.368-5.562c5.863-6.14 15.375-6.14 21.235 0 5.863 6.14 5.863 16.098 0 22.247l-23.007 24.98c-1.43 1.556-3.757 1.556-5.188 0z')
+              
       section#elemis.elemis
         include templates/elemis
 
@@ -92,13 +143,16 @@ html(lang='en')
     footer.footer#footer
       include templates/footer
 
+    script(src='https://cdn.jsdelivr.net/mojs/0.265.6/mo.min.js')
     script(src='https://code.jquery.com/jquery-2.1.4.min.js')
     script(src='http://maps.google.com/maps/api/js?sensor=true')
-    script(src='js/unveil.min.js')
     script(src='js/gmaps.min.js')
-    script(src='js/trianglify.min.js')
-    script(src='js/tween-max.min.js')
-    script(src='js/scroll_to_plugin.min.js')
-    script(src='js/cash.min.js')
-    script(src='js/card_circle.min.js')
     script(src='js/main.min.js')
+    
+    script(src='js/modernizr.custom.min.js')
+    script(src='js/classie.min.js')
+    script(src='js/helper.min.js')
+    script(src='js/grid3d.min.js')
+    
+    script.
+      new grid3D( document.getElementById( 'grid3d' ) );

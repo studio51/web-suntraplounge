@@ -1,17 +1,40 @@
-.service {
-  &-nails {
-    $service-nails-color: #f0dcdc;
+.nails {
+  .alert { background-color: $service-nails-color; }
 
-    .service {
+  .service {
+    &-category--title {
+      background-color: rgba($service-nails-color, .3);
 
-      &-title {
-        background-color: rgba($service-nails-color, .3);
-      }
+      &:before { background-color: $service-nails-color }
+    }
 
-      &-meta {
-        background-color: $service-nails-color;
-        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-nails-color, .3);
-        color: #fff;
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-nails-color, 1), rgba($service-nails-color, 0));
+        }
+
+        &--caption { border-color: $service-nails-color; }
+
+        &--meta {
+          &-section {
+
+            &.poper {
+              background-color: $service-nails-color;
+              box-shadow: 6px 6px 0 0 rgba($service-nails-color, .5);
+            }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-nails-color; }
+            }
+          }
+        }
       }
     }
   }

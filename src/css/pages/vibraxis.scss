@@ -1,17 +1,36 @@
-.service {
-  &-vibraxis {
-    $service-vibraxis-color: #f0f0ff;
+.vibraxis {
+  .alert { background-color: $service-vibraxis-color; }
 
-    .service {
+  .service {
+    &-category--title {
+      background-color: rgba($service-vibraxis-color, .3);
 
-      &-title {
-        background-color: rgba($service-vibraxis-color, .3);
-      }
+      &:before { background-color: $service-vibraxis-color }
+    }
 
-      &-meta {
-        background-color: $service-vibraxis-color;
-        box-shadow: (ui(spacing) / 4) (ui(spacing) / 4) 0 rgba($service-vibraxis-color, .3);
-        color: #fff;
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-vibraxis-color, 1), rgba($service-vibraxis-color, 0));
+        }
+
+        &--caption { border-color: $service-vibraxis-color; }
+
+        &--meta {
+          &-section {
+            &:first-child { margin-top: 0; }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-vibraxis-color; }
+            }
+          }
+        }
       }
     }
   }

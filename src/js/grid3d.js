@@ -24,19 +24,19 @@
 
 	grid3D.prototype._init = function() {
 		// grid wrapper
-		this.gridWrap = $('.grid3d-wrapper');
+		this.gridWrap = $('.services--categories-wrapper');
 		// grid element
-		this.grid = $('.grid3d-inner');
+		this.grid = $('.services--categories-inner');
 		// main grid items
-		this.gridItems = [].slice.call($('.grid3d-object'));
+		this.gridItems = [].slice.call($('.service-category'));
 		// default sizes for grid items
 		this.itemSize = { width : this.gridItems[0].offsetWidth, height : this.gridItems[0].offsetHeight };
 		// content
-		this.contentEl = $('.grid3d-content');
+		this.contentEl = $('.services--content');
 		// content items
-		this.contentItems = [].slice.call($('.grid3d-content-page'));
+		this.contentItems = [].slice.call($('.service-content--page'));
 		// close content cross
-		this.close = $('.close-content');
+		this.close = $('.close-page');
 		// loading indicator
 		this.loader = $('.loading');
 		// support: support for pointer events, transitions and 3d transforms
@@ -50,20 +50,14 @@
 
 		// open the content element when clicking on the main grid items
 		this.gridItems.forEach( function( item, idx ) {
-
 			item.addEventListener( 'click', function() {
-				self._showContent($(item).data('target'));
+				self._showContent(item, $(item).data('target'));
 			} );
 		} );
 
 		// close the content element
 
-		// this.close[0].on('click', function() {
-		//
-		// });
-		console.log(this.close[0]);
-		this.close[0].addEventListener( 'click', function() {
-			console.log(self);
+		$(this.close).on('click', function() {
 			self._hideContent();
 		} );
 
@@ -89,10 +83,11 @@
 	// creates placeholder and animates it to fullscreen
 	// in the end of the animation the content is shown
 	// a loading indicator will appear for 1 second to simulate a loading period
-	grid3D.prototype._showContent = function( target ) {
+	grid3D.prototype._showContent = function(service, target) {
 		if( this.isAnimating ) {
 			return false;
 		}
+
 		this.isAnimating = true;
 
 		var self = this,
@@ -101,7 +96,8 @@
 				setTimeout( function() {
 					// hide loader
 					// classie.removeClass( self.loader, 'show' );
-					$(self.loader).removeClass('show');
+					$(self.loader[0]).removeClass('show');
+
 					// in the end of the transition set class "show" to respective content item
 					// classie.addClass( self.contentItems[ pos ], 'show' );
 					$('#' + target).addClass('show');
@@ -109,12 +105,12 @@
 				}, 1000 );
 				// show content area
 				// classie.addClass( self.contentEl, 'show' );
-				$(self.contentEl).addClass('show');
+				$(self.contentEl[0]).addClass('show');
 				// show loader
 				// classie.addClass( self.loader, 'show' );
-				$(self.loader).addClass('show');
-				// classie.addClass( document.body, 'noscroll' );
-				$(document.body).addClass('noscroll');
+				$(self.loader[0]).addClass('show');
+				// classie.addClass( document.body, 'no-scroll' );
+				$(document.body).addClass('no-scroll');
 				self.isAnimating = false;
 			};
 
@@ -124,11 +120,11 @@
 			return false;
 		}
 
-		var currentItem = $('#' + target),
-			itemContent = currentItem.innerHTML;
+		var currentItem = $(service),
+			itemContent = currentItem.find('img');
 
 		// create the placeholder
-		this.placeholder = this._createPlaceholder(itemContent );
+		this.placeholder = this._createPlaceholder(itemContent[0]);
 
 		// set the top and left of the placeholder to the top and left of the clicked grid item (relative to the grid)
 		this.placeholder.style.left = currentItem.offsetLeft + 'px';
@@ -163,8 +159,8 @@
 
 
 		var self = this,
-			contentItem = $('.grid3d-content-page > .show'),
-			currentItem = this.gridItems[ this.contentItems.indexOf( contentItem ) ];
+			contentItem = $('.services--content > .show'),
+			currentItem = $('.services--categories-inner').find('.service-category.active');
 
 		// classie.removeClass( contentItem, 'show' );
 		$(contentItem).removeClass('show');
@@ -172,8 +168,8 @@
 		$(this.contentEl).removeClass('show');
 		// without the timeout there seems to be some problem in firefox
 		setTimeout( function() {
-			// classie.removeClass( document.body, 'noscroll' );
-			$(document.body).removeClass('noscroll');
+			// classie.removeClass( document.body, 'no-scroll' );
+			$(document.body).removeClass('no-scroll');
 		}, 25 );
 		// that's it for no support..
 		if( !this.support ) return false;
@@ -183,15 +179,14 @@
 
 		// reset placeholder style values
 
-		this.placeholder.style.left = currentItem.offsetLeft + 'px';
-		this.placeholder.style.top = currentItem.offsetTop + 'px';
+		this.placeholder.style.left = currentItem[0].offsetLeft + 'px';
+		this.placeholder.style.top = currentItem[0].offsetTop + 'px';
 		this.placeholder.style.width = this.itemSize.width + 'px';
 		this.placeholder.style.height = this.itemSize.height + 'px';
 
 		var onEndPlaceholderTransFn = function( ev ) {
 			this.removeEventListener( transEndEventName, onEndPlaceholderTransFn );
 			// remove placeholder from grid
-
 
 			self.placeholder.parentNode.removeChild( self.placeholder );
 			// show grid item again
@@ -211,7 +206,7 @@
 	grid3D.prototype._createPlaceholder = function( content ) {
 		var front = document.createElement( 'div' );
 		front.className = 'front';
-		front.innerHTML = content;
+		$(front).html(content);
 		var back = document.createElement( 'div' );
 		back.className = 'back';
 		back.innerHTML = '&nbsp;';
@@ -219,7 +214,6 @@
 		placeholder.className = 'placeholder';
 		$(placeholder).append(front);
 		$(placeholder).append(back);
-		// placeholder.appendChild( back );
 		return placeholder;
 	};
 
