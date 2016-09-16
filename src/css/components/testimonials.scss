@@ -1,16 +1,20 @@
 .testimonial {
   &s {
-    padding: ui(spacing) 0;
-    height: 50vh;
+    height: 45vh;
+    padding-top: ui(spacing) / 2;
 
-    @include mq($from: 'sm') { height: 45vh; }
+    @include mq($from: 'sm') { height: 35vh; }
 
     .grid {
       position: relative;
 
       &, &::before {
-        background: url('../img/woman-sitting.png') -100px 0 no-repeat;
+        background-image: url('../img/woman-sitting.png');
+        background-repeat: no-repeat;
+        background-position: -50px 25px;
         background-size: contain;
+
+        @include mq($from: 'sm') { background-position: -80px 25px; }
       }
 
       &::before {
@@ -18,27 +22,22 @@
         content: '';
         position: absolute;
         height: 100%;
-        left: -100px;
+        left: -50px;
+        bottom: -25px;
         width: 100%;
+
+        @include mq($from: 'sm') { left: -80px; }
       }
     }
 
     &-container {
       list-style: none;
-      padding: 0;
-      margin: 0 ui(spacing) 0 (ui(spacing) * 2);
+      padding: 0 0 0 140px;
+      margin: 0;
 
-      @include mq($from: 'sm') { margin-left: ui(spacing) * 3; }
+      @include mq($until: 'sm') { padding-right: ui(spacing); }
     }
   }
 
-  &-author {
-    @extend .font-typeOne;
-
-    font-size: 2.5em;
-    margin-bottom: ui(spacing) / 2;
-    margin-top: 0;
-  }
-
-  &-content { line-height: 1.2; }
+  &-author { margin-bottom: ui(spacing) / 2; }
 }

@@ -7,6 +7,7 @@
     padding: ui(spacing);
     margin: ui(spacing);
     text-align: center;
+    align-items: center;
 
     @include mq($from: 'sm') {
       text-align: left;

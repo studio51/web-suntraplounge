@@ -44,49 +44,35 @@ $suntrap: (
 
 /* Components */
 
-.list-inline {
-  display: flex;
-  list-style: none;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 0;
-}
-
 .tab {
-  &s { @extend .list-inline; }
-
   &-pane:not(.active) { display: none; }
 }
 
-.mt {
-  margin-top: ui(spacing);
+.nm { margin: 0 !important; }
 
-  &-xs { @include mq($until: 'sm') { margin-top: ui(spacing) / 2; }}
+.mt {
+	margin-top: ui(spacing);
+
+  &-sm { @include mq($until: 'sm') { margin-top: ui(spacing); } }
 }
 
 .mb {
-  margin-bottom: ui(spacing);
+	margin-bottom: ui(spacing);
 
-  @include mq($until: 'sm') {
-
-    &-sm {
-      margin-bottom: ui(spacing);
-    }
-  }
+  &-sm { @include mq($until: 'sm') { margin-bottom: ui(spacing); } }
 }
 
-.ml { margin-left: ui(spacing); }
-.mr { margin-right: ui(spacing); }
+.ml {
+  &--sm { @include mq($from: 'sm') { margin-left: ui(spacing); } }
+}
+
+.mr {
+  &--sm { @include mq($from: 'sm') { margin-right: ui(spacing); } }
+}
 
 p ~ p { margin-top: ui(spacing) / 3; }
 
-@include mq($until: 'sm') {
-  .image-cover {
-    margin-left: -(ui(spacing));
-    max-width: calc(100% + #{ui(spacing) * 2});
-    margin-right: -(ui(spacing));
-  }
-}
+img { vertical-align: middle; }
 
 /* Body */
 
@@ -98,122 +84,194 @@ body {
   flex-direction: column;
   font-weight: 300;
   font-size: 14px;
+}
 
-  &.body--hidden {
-    .navbar {
-      opacity: 0;
-      transition: opacity 1s ease-out,
-                  visibility 0s linear .5s;
-      visibility: hidden;
+// section { background-color: ui(body_color); }
+
+.navbar {
+  background-color: none;
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+
+  &-brand {
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    text-align: center;
+
+    &-container {
+      align-items: center;
+      flex-direction: column;
+      margin: ui(spacing) 0 (ui(spacing) * 2) 0;
+    }
+  }
+
+  &-trigger {
+  	position: relative;
+    border: none;
+  	overflow: visible;
+  	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background-color: #774D37;
+    padding: ui(spacing);
+    border-radius: 100%;
+
+    &.opened { background: linear-gradient(to bottom, rgba(#774D37, .6) 50%, rgba(#774D37, 0) 0%); }
+
+    &:hover,
+    &:focus { outline: none; }
+
+    &-icon {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      transform: rotate(0deg);
+      transition: .5s ease-in-out;
+      cursor: pointer;
+      z-index: 100;
+
+      span {
+        display: block;
+        position: absolute;
+        height: 9px;
+        background: #fff;
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: .25s ease-in-out;
+        width: 50%;
+
+        &:nth-child(even) { left: 50%; border-radius: 0 ui(border_radius_size) ui(border_radius_size) 0; }
+        &:nth-child(odd) { left: 0px; border-radius: ui(border_radius_size) 0 0 ui(border_radius_size); }
+
+        &:nth-child(1), &:nth-child(2) { top: 8px; }
+        &:nth-child(3), &:nth-child(4) { top: 20px; }
+        &:nth-child(5), &:nth-child(6) { top: 32px; }
+      }
+
+      &.opened {
+        span {
+
+          &:nth-child(even) { left: 50%; border-radius: 0 ui(border_radius_size) ui(border_radius_size) 0; }
+          &:nth-child(odd) { left: 0px; border-radius: ui(border_radius_size) 0 0 ui(border_radius_size); }
+
+          &:nth-child(1), &:nth-child(6) { transform: rotate(45deg); }
+          &:nth-child(2), &:nth-child(5) { transform: rotate(-45deg); }
+
+          &:nth-child(1) { left: 7px; top: 15px; }
+          &:nth-child(2) { left: calc(50% - 7px); top: 15px; }
+          &:nth-child(3) { left: -50%; opacity: 0; }
+          &:nth-child(4) { left: 100%; opacity: 0; }
+          &:nth-child(5) { left: 7px; top: 27px; }
+          &:nth-child(6) { left: calc(50% - 7px); top: 27px; }
+        }
+      }
+    }
+  }
+
+  &-inner {
+    flex-direction: column;
+    align-items: center;
+    padding: ui(spacing);
+
+    @include mq($from: 'sm') { padding: ui(spacing) * 2; }
+  }
+
+  &-menu {
+    display: none;
+    padding: 57px 0 0;
+    margin: -57px 0 0;
+    list-style: none;
+    flex-direction: column;
+    width: calc(100vw - #{ui(spacing) * 2});
+    background-color: rgba(#774D37, .6);
+    border-radius: 9px;
+
+    @include mq($from: 'sm') { width: 300px; }
+
+    &.opened {
+      display: flex;
+      z-index: 5;
+    }
+
+    &-item {
+      &:first-child a { padding-top: 0; }
+      &:nth-child(even) a { padding: ui(spacing) / 2; }
+    }
+
+    &-link {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      padding: ui(spacing);
+      font-size: 1.2em;
+      font-weight: 300;
+      color: #fff;
+
+      &:hover { font-weight: 400; }
     }
   }
 }
 
-// @import 'partials/header';
-//
-// @import 'components/jumbotron';
-// @import 'components/about';
-// @import 'components/services';
-//
-//   @import 'pages/*';
-//
-// @import 'components/elemis';
-// @import 'components/testimonials';
-//
-// @import 'partials/footer';
-
-@import 'partials/header';
-
 @import 'components/jumbotron';
 @import 'components/about';
 @import 'components/services';
-// @import 'components/elemis';
-// @import 'components/testimonials';
+@import 'components/elemis';
+@import 'components/testimonials';
 
-// @import 'partials/footer';
-//
-.section {
-  &-title {
+.footer {
+  overflow: hidden;
+  height: auto;
+  position: relative;
+
+  &-content {
+    padding: ui(spacing);
+
+    @include mq($from: 'sm') { padding-left: 0; };
+  }
+
+  &-address {
+    background-color: #fff;
+    z-index: 5;
+
+    &-content {
+      margin: (ui(spacing) / 2) 0;
+    }
+
+    &-form {
+
+      &-button {
+        border: none;
+        background-color: ui(brand_alt_color);
+        padding: ui(spacing) / 2;
+        border-radius: ui(border_radius_size);
+
+        &:hover { background-color: darken(ui(brand_alt_color), 10%); }
+      }
+    }
+  }
+
+  &-copyright { margin-top: ui(spacing); }
+
+  &-backdrop {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    background-color: #fff;
+    z-index: -1;
+    left: 0;
+  }
+
+  &-map {
+    min-height: 100%;
+    background-image: url('../img/map.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+
+    @include mq($until: 'sm') { height: 250px; }
   }
 }
-//     @extend .font-typeTwo;
-//
-//     align-self: flex-start;
-//     font-size: 2.5em;
-//     font-weight: 600;
-//     margin-bottom: ui(spacing) / 2 + (ui(spacing) / 4) ;
-//     text-transform: uppercase;
-//     position: relative;
-//
-//     &::after {
-//       bottom: -(ui(spacing) / 4);
-//       border-bottom: (ui(border_radius_size) - 1) solid ui(brand_color);
-//       content: '';
-//       left: 0;
-//       right: 0;
-//       position: absolute;
-//       transition: width .5s ease-in-out;
-//       width: 15%;
-//     }
-//
-//     &:hover::after { width: 100%; }
-//   }
-//
-//   &-subtitle {
-//     @extend .font-typeTwo;
-//
-//     display: block;
-//     font-size: .5em;
-//     font-weight: 400;
-//   }
-// }
-//
-// // Alerts
-//
-// .alert {
-//   &-info {
-//     background-color: #d9edf7;
-//   }
-// }
-//
-// // .jumbotron::after {
-// //   // background: -webkit-linear-gradient(45deg, rgba(0,0,0,0) 0%, rgba(#C85EA9,1) 100%);
-// //   background-color: rgba(#54A63D, .4);
-// //   content: '';
-// //   position: absolute;
-// //   top: 0;
-// //   left: 0;
-// //   width: 100%;
-// //   height: 100%;
-// //   z-index: -1;
-// // }
-//
-// // .jumbotron::before {
-// //   // background: -webkit-linear-gradient(45deg, rgba(#C85EA9,1) 0%, rgba(163,65,109,0) 100%);
-// //   content: '';
-// //   position: absolute;
-// //   top: 0;
-// //   left: 0;
-// //   width: 100%;
-// //   height: 100%;
-// //   z-index: -1;
-// // }
-//
-// // .jumbotron {
-// //  position: relative;
-// //  }
-//
-//
-//   .navbar h3 {
-//     align-self: center;
-//     font-size: 1.8em;
-//     font-family: 'Arial';
-//     font-weight: 200;
-//   }
-//   .navbar {
-//     height: 15vh;
-//   }
-//   .navbar img { display: none; }
-//   .navbar a {
-//     color: #fff;
-//   }

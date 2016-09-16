@@ -17,7 +17,33 @@ html(lang='en')
   body
 
     header.header
-      include templates/header
+      nav.navbar
+
+        .grid
+          .row.navbar-inner
+
+            h1.navbar-brand-container
+              a.navbar-brand(href='http://suntraplounge.co.uk', title!= suntrap)
+                != suntrap
+
+            button.navbar-trigger
+              .navbar-trigger-icon
+                span
+                span
+                span
+                span
+                span
+                span
+
+            ul#navbar-menu.navbar-menu
+              li.navbar-menu-item
+                a.navbar-link(href='#services', title='Our Services', class='navbar-menu-link') Services
+
+              li.navbar-menu-item
+                a.navbar-link(href='#elemis', title='Our Elemis Services &amp; Products', class='navbar-menu-link') Elemis
+
+              li.navbar-menu-item
+                a.navbar-link(href='#footer', title='Get in touch with us', class='navbar-menu-link') Contact
 
     main.main
 
@@ -35,7 +61,7 @@ html(lang='en')
       section#about.about
         include templates/about
 
-      section#grid3d.services.services--vertical
+      section#services.services.services--vertical
 
         .services--categories-wrapper
           .services--categories-inner
@@ -127,6 +153,7 @@ html(lang='en')
           span.loading
           
             // By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL
+            //- 
             svg(width='140', height='64', viewbox='0 0 140 64', xmlns='http://www.w3.org/2000/svg', fill='#CC514C')
               path(d='M30.262 57.02L7.195 40.723c-5.84-3.976-7.56-12.06-3.842-18.063 3.715-6 11.467-7.65 17.306-3.68l4.52 3.76 2.6-5.274c3.717-6.002 11.47-7.65 17.305-3.68 5.84 3.97 7.56 12.054 3.842 18.062L34.49 56.118c-.897 1.512-2.793 1.915-4.228.9z', fill-opacity='.5')
                 animate(attributename='fill-opacity', begin='0s', dur='1.4s', values='0.5;1;0.5', calcmode='linear', repeatcount='indefinite')
@@ -141,12 +168,40 @@ html(lang='en')
         include templates/testimonials
 
     footer.footer#footer
-      include templates/footer
+      .footer-backdrop
+
+      .grid
+
+        .row
+          .cell-xs-12.cell-sm-5.footer-content
+            
+            address.footer-address
+              h1.footer-address-title!= suntrap
+              h3.footer-address-phone 01782 799 733
+
+              p.footer-address-content.
+                35 Dimsdale Parade East, Wolstanton <br />
+                Newcastle-under-Lyme <br />
+                ST5 8BX
+
+            form.footer-address-form(action='http://maps.google.com/maps', class='geolocation', method='get', target='_blank')
+              input(type='hidden', name='saddr', value='')
+              input(type='hidden', name='daddr', value='ST5 4WS, 35 Dimsdale Parade East, Wolstanton')
+              input.footer-address-form-button(type='submit', value='Get directions')
+
+            copyright.footer-copyright
+              p.
+                Design &amp; Development by <a href='http://www.creative-studio51.co.uk'>Studio51 Creative Services</a>
+            
+              p.
+                &copy; #{suntrap} 2016. All names, brands and imagery used are
+                trademarks and / or copyrighted materials of their respective
+                owners.
+
+          .cell-xs-12.cell-sm.footer-map
 
     script(src='https://cdn.jsdelivr.net/mojs/0.265.6/mo.min.js')
     script(src='https://code.jquery.com/jquery-2.1.4.min.js')
-    script(src='http://maps.google.com/maps/api/js?sensor=true')
-    script(src='js/gmaps.min.js')
     script(src='js/main.min.js')
     
     script(src='js/modernizr.custom.min.js')
@@ -155,4 +210,4 @@ html(lang='en')
     script(src='js/grid3d.min.js')
     
     script.
-      new grid3D( document.getElementById( 'grid3d' ) );
+      new grid3D(document.getElementById('services'));

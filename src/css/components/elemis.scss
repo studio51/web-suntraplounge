@@ -1,128 +1,100 @@
-section.elemis {
+.elemis {
+  background-color: #fff;
+  padding: ui(spacing);
 
-  .tab {
+  @include mq($from: 'sm') { padding: (ui(spacing) * 2); }
+  @include mq($from: 'md') { padding-left: 0; padding-right: 0; }
+
+  &-tab {
     &s {
-      margin-left: ui(spacing);
-      margin-bottom: ui(spacing) / 2;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
       border-bottom: 3px solid #CDE7EA;
+      margin-bottom: ui(spacing) / 2;
 
       @include mq($until: 'sm') {
-        margin: ui(spacing) 0;
-        width: calc(100% + #{ui(spacing) * 2});
         margin-left: -(ui(spacing));
+        width: calc(100% + #{ui(spacing) * 2});
       }
     }
 
     &-item {
-      display: flex;
+      flex: 1;
+
+      @include mq($from: 'sm') { flex: 0 1 auto; }
+
+      &-full {
+        display: none;
+
+        @include mq($from: 'sm') {
+          flex: 1;
+          display: flex;
+          opacity: .5;
+          justify-content: flex-end;
+          padding-bottom: ui(spacing);
+        }
+      }
 
       &.active {
-
         a { background-color: ui(brand_alt_color); }
       }
     }
 
     &-link {
+      display: flex;
+      flex: 1;
       color: ui(brand_color);
       font-weight: 300;
       padding: ui(spacing);
     }
   }
 
-  .grid {
-    position: relative;
-    // z-index: 1;
+  &-description { margin-top: ui(spacing); }
 
-    &::before {
-      background: url('../img/elemis-logo-small.png') top right no-repeat;
-      background-size: 70%;
-      content: '';
-      height: 80px;
-      position: absolute;
-      opacity: .3;
-      right: 0;
-      top: 0;
-      width: 110px;
-      // z-index: -1;
-    }
-  }
-
-  &-title { @extend .section-title; }
-  &-subtitle { @extend .section-subtitle; }
-
-  @include mq($until: 'sm') {
-
-    &-title {
-      align-self: center;
-      text-align: center;
-
-      &::after {
-        left: 0;
-        right: 0;
-        margin: auto;
-      }
-    }
+  &-products {
+    margin-top: ui(spacing) / 2;
+    width: 100%;
   }
 
   &-service {
-    background-color: rgba(ui(brand_color), .8);
-    border-radius: ui(border_radius_size);
-    color: #fff;
     margin-top: ui(spacing) / 2;
-    padding: ui(spacing);
-    position: relative;
-    // z-index: 1;
-
-    @include mq($from: 'md') { margin-left: ui(spacing); }
 
     &-price {
-      $price-distance: ui(spacing) / 4;
+      background-color: #f7ecb5;
+      color: darken(#f7ecb5, 50%);
+      border-radius: 100%;
+      padding: (ui(spacing) / 2 + 3px) (ui(spacing) / 2);
+      margin-right: ui(spacing) / 2;
+    }
 
-      background-color: rgba(ui(brand_color), 1);
-      box-shadow: -($price-distance / 2) ($price-distance / 2) $price-distance 0 rgba(ui(brand_color), .3);
-      color: #fff;
-      font-size: 1.3em;
-      font-weight: 400;
-      padding: $price-distance;
-      position: absolute;
-      right: -($price-distance);
-      top: -($price-distance);
-      // z-index: 1;
+    &-title {}
 
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        border: ($price-distance / 2) solid transparent;
-      }
+    &-description { margin-top: ui(spacing) / 2; }
+
+    &-offer {
+      background-color: #f7ecb5;
+      color: darken(#f7ecb5, 50%);
+      border-radius: ui(border_radius_size);
+      display: flex;
+      flex-direction: column;
+      margin-top: ui(spacing) / 2;
+      padding: (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) + (ui(spacing) / 2));
+      position: relative;
 
       &::before {
-        border-right-color: ui(brand_color);
-        border-bottom-color: ui(brand_color);
-        left: -($price-distance);
+        align-items: center;
+        bottom: 0;
+        content: '£';
+        color: darken(#f7ecb5, 50%);
+        display: flex;
+        font-size: 22px;
+        left: 0;
+        padding: ui(spacing) / 2;
+        position: absolute;
         top: 0;
       }
-
-      &::after {
-        border-left-color: ui(brand_color);
-        border-top-color: ui(brand_color);
-        bottom: -($price-distance);
-        right: 0;
-      }
-    }
-
-    &-title {
-      @extend .section-title;
-
-      font-size: 1.6em;
-
-      &::after { border-color: #fff; }
-    }
-
-    &-subtitle {
-      @extend .section-subtitle;
-
-      font-size: .6em;
     }
   }
 }

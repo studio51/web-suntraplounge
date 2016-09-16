@@ -9,11 +9,6 @@ $service-aestethic-color: #C8CDB5;
 
 .no-scroll { overflow: hidden; }
 
-.services--categories-inner .placeholder {
-	width: 340px;
-	height: 300px;
-}
-
 .view-full {
 
   .services--categories-inner { transform: translateZ(-1500px); }
@@ -45,6 +40,8 @@ $service-aestethic-color: #C8CDB5;
         	position: absolute;
         	transform-style: preserve-3d;
         	transition: all 0.5s ease-out;
+					width: 340px;
+					height: 300px;
 
           .front,
           .back {
@@ -158,7 +155,9 @@ $service-aestethic-color: #C8CDB5;
 			  transition-timing-function: ease-out;
 			}
 
-			&:hover::before, &:focus::before, &:active::before { transform: scale(1); }
+			&:hover::before,
+			&:focus::before,
+			&:active::before { transform: scale(1); }
     }
   }
 
@@ -175,6 +174,7 @@ $service-aestethic-color: #C8CDB5;
       min-height: 100%;
       height: auto;
       background-size: cover;
+			background-repeat: no-repeat;
 
       &::after {
         content: '';
@@ -221,15 +221,13 @@ $service-aestethic-color: #C8CDB5;
 					display: flex;
 					cursor: pointer;
 					pointer-events: none;
-					// opacity: 0;
+					opacity: 0;
 					z-index: 100;
 					transition: opacity 0.3s;
 				}
 			}
 
-      &--title {
-				flex: 1;
-			}
+      &--title { flex: 1; }
 
       &--body { }
 
@@ -253,26 +251,6 @@ $service-aestethic-color: #C8CDB5;
 						display: flex;
 						flex: 0 1 auto;
 					}
-
-          .mt {
-						margin-top: ui(spacing);
-
-            &-sm { @include mq($until: 'sm') { margin-top: ui(spacing); } }
-          }
-
-          .mb {
-						margin-bottom: ui(spacing);
-
-            &-sm { @include mq($until: 'sm') { margin-bottom: ui(spacing); } }
-          }
-
-          .ml {
-            &--sm { @include mq($from: 'sm') { margin-left: ui(spacing); } }
-          }
-
-          .mr {
-            &--sm { @include mq($from: 'sm') { margin-right: ui(spacing); } }
-          }
 
           &.poper {
             padding: ui(spacing);
@@ -298,6 +276,7 @@ $service-aestethic-color: #C8CDB5;
 					&s {
 						display: flex;
 						flex-direction: column;
+						margin-top: ui(spacing) / 2;
 						flex: 1;
 
 						> div {
