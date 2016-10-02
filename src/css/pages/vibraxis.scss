@@ -1,0 +1,37 @@
+.vibraxis {
+  .alert { background-color: $service-vibraxis-color; }
+
+  .service {
+    &-category--title {
+      background-color: rgba($service-vibraxis-color, .3);
+
+      &:before { background-color: $service-vibraxis-color }
+    }
+
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-vibraxis-color, 1), rgba($service-vibraxis-color, 0));
+        }
+
+        &--caption { border-color: $service-vibraxis-color; }
+
+        &--meta {
+          &-section {
+            &:first-child { margin-top: 0; }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-vibraxis-color; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

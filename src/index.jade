@@ -1,62 +1,207 @@
 !!! 5
 
-html(lang="en")
+- suntrap = 'Suntrap Tanning &amp; Beauty Lounge'
+
+html(lang='en')
   head
-    title Suntrap Tanning &amp; Beauty Lounge
+    title!= suntrap
 
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name='viewport', content='width=device-width, initial-scale=1')
 
-    meta(name="description", content="")
+    meta(name='description', content='')
 
-    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700')
     link(rel='stylesheet', href='css/main.min.css')
-    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Dosis:400,300,200,500,600,700,800|Poiret+One')
-    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,300italic')
 
   body
 
-    header
+    header.header
       nav.navbar
-        .container
-          .row
-            .navbar-header
-              a(href='http://whitmoretearooms.co.uk', title='Suntrap Tanning &amp; Beauty Lounge')
-                img.img-responsive(src='img/logo-color.svg', alt='Suntrap Tanning &amp; Beauty Lounge', title='Suntrap Tanning &amp; Beauty Lounge')
 
-    main
-      section.intro
+        .grid
+          .row.navbar-inner
 
-      section.services
+            h1.navbar-brand-container
+              a.navbar-brand(href='http://suntraplounge.co.uk', title!= suntrap)
+                != suntrap
+
+            button.navbar-trigger
+              .navbar-trigger-icon
+                span
+                span
+                span
+                span
+                span
+                span
+
+            ul#navbar-menu.navbar-menu
+              li.navbar-menu-item
+                a.navbar-link(href='#services', title='Our Services', class='navbar-menu-link') Services
+
+              li.navbar-menu-item
+                a.navbar-link(href='#elemis', title='Our Elemis Services &amp; Products', class='navbar-menu-link') Elemis
+
+              li.navbar-menu-item
+                a.navbar-link(href='#footer', title='Get in touch with us', class='navbar-menu-link') Contact
+
+    main.main
+
+      .jumbotron
+        .waves
+          svg#suntrap-waves(viewbox='0 0 862 154', preserveAspectRatio='xMidYMax meet', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', xmlns:sketch='http://www.bohemiancoding.com/sketch/ns')
+            path#4(d='M0.489631653,34.3646836 C0.489631653,34.3646836 21.4207662,38.834912 49.2550087,34.3646836 C78.5628745,29.6577888 90.4441452,15.9982219 145.870865,15.9982219 C205.874992,15.9982219 248.966415,70.0189099 327.7742,70.0189099 C406.581985,70.0189099 468.890625,27.5362229 534.836182,27.5362229 C600.781738,27.5362229 638.594666,51.2580914 753.095886,53.991734 C823.156222,55.6643792 861.60157,7.72081944 861.60157,7.72081944 L861.60157,153.999994 L0.489631653,153.999994 L0.489631653,34.3646836 Z', fill-opacity='0.800000012', fill='#AACFBE', sketch:type='MSShapeGroup')
+            path#3(d='M0.489631662,0.871229798 C0.489631662,0.871229798 114.345018,49.1090513 193.394815,52.0156255 C272.444612,54.9221998 368.080692,15.9834381 453.006693,13.138433 C587.111704,8.64594033 675.405527,53.9730764 753.921884,52.0156255 C832.438242,50.0581746 861.601572,6.55684508 861.601572,6.55684508 L861.60157,153.999999 L0.489631662,153.999999 L0.489631662,0.871229798 Z', fill-opacity='0.5', fill='#E5EAD2', sketch:type='MSShapeGroup')
+            path#2(d='M0.489631662,14.0815484 C0.489631662,14.0815484 53.4287288,68.837549 104.299036,75.0706902 C195.110922,86.1978748 247.148432,57.4896317 319.609323,52.4427414 C401.718493,46.7238501 472.024617,89.8639929 534.255197,92.878418 C552.771269,93.7753293 582.196748,92.9269648 611.243174,82.4554367 C649.06297,68.8210203 688.880788,44.0883326 730.140024,38.9895649 C767.596668,34.360717 795.904109,48.8670269 820.470224,55.9727402 C840.55615,61.7825652 861.60157,60.4606569 861.60157,60.4606569 L861.60157,154.000005 L0.489631662,154.000005 L0.489631662,14.0815484 Z', fill-opacity='0.600000024', fill='#DFDAB1', sketch:type='MSShapeGroup')
+            path#1(d='M0.489631662,89.1525564 C0.489631662,89.1525564 28.1696033,119.900665 76.3904132,121.884556 C124.611223,123.868446 140.178629,92.9334877 240.507624,89.9869292 C340.836618,87.0403707 409.193033,142.590103 494.09852,144.067947 C579.004007,145.545792 614.596515,89.9869292 721.197946,89.9869292 C792.076303,89.9869292 861.601572,130.9576 861.601572,130.9576 L861.60157,153.999999 L0.489631662,153.999999 L0.489631662,89.1525564 Z', fill='#EDEBDE', sketch:type='MSShapeGroup')
+
+          //- p Opening Hours on <strong>Monday - Thursday 10:30 - 20:00</strong>, <strong>Friday 10:00 - 20:00</strong>, <strong>Saturday 10:00 - 18:00</strong> and <strong>Sunday closed</strong>
+          //- p Find us on <strong><a href='https://www.facebook.com/SuntrapLounge', title='Find Suntrap Lounge on Facebook'>facebook</a></strong>
+
+      section#about.about
+        include templates/about
+
+      section#services.services.services--vertical
+
+        .services--categories-wrapper
+          .services--categories-inner
+            
+            .row
+              .cell-xs-12.cell-md-3.service-category.tanning(data-target='tanning', style='background-image: url(img/categories/tanning.jpg)')
+                img(src='img/categories/tanning.jpg')
+                h1.service-category--title Tanning
+              
+              .cell-xs-12.cell-md-6
+                .row
+                  .cell-xs-12.cell-md-6.service-category.waxing(data-target='waxing', style='background-image: url(img/categories/waxing.png)')
+                    img(src='img/categories/waxing.png')
+                    h1.service-category--title Lycon Waxing
+                  
+                  .cell-xs-12.cell-md-6.service-category.vibraxis(data-target='vibraxis', style='background-image: url(img/categories/vibraxis.jpg)')
+                    img(src='img/categories/vibraxis.jpg')
+                    h1.service-category--title Vibraxis
+                  
+                .row
+                  .cell-xs-12.service-category.beauty(data-target='beauty', style='background-image: url(img/categories/beauty.jpg)')
+                    img(src='img/categories/beauty.jpg')
+                    h1.service-category--title Beauty
+                
+              .cell-xs-12.cell-md-3.service-category.massage(data-target='massage', style='background-image: url(img/categories/massage.jpg)')
+                img(src='img/categories/massage.jpg')
+                h1.service-category--title Massage
+                
+            .row
+              .cell-xs-12.cell-md-3.service-category.facial(data-target='facial', style='background-image: url(img/categories/facial.png)')
+                img(src='img/categories/facial.png')
+                h1.service-category--title Facial
+                
+              .cell-xs-12.cell-md-6.service-category.nails(data-target='nails', style='background-image: url(img/categories/nails.jpg)')
+                img(src='img/categories/nails.jpg')
+                h1.service-category--title Manicure, Pedicure &amp; Nail Technology
+                
+              .cell-xs-12.cell-md-3.service-category.aestethic(data-target='aestethic', style='background-image: url(img/categories/aestethic.jpg)')
+                img(src='img/categories/aestethic.jpg')
+                h1.service-category--title Aesthetics
+                    
+        .services--content
+          
+          - var tanning   = { name: 'tanning', format: 'jpg', title: 'Massage Therapy' }
+          - var waxing    = { name: 'waxing', format: 'png', title: 'Lycon Waxing' }
+          - var vibraxis  = { name: 'vibraxis', format: 'jpg', title: 'Vibraxis' }
+          - var beauty    = { name: 'beauty', format: 'jpg', title: 'Beauty' }
+          - var massage   = { name: 'massage', format: 'jpg', title: 'Massage' }
+          - var facial    = { name: 'facial', format: 'png', title: 'SkinBase Facial' }
+          - var nails     = { name: 'nails', format: 'jpg', title: 'Manicure, Pedicure &amp; Nail Technology' }
+          - var aestethic = { name: 'aestethic', format: 'jpg', title: 'Aestethic' }
+          
+          each service in [tanning, waxing, vibraxis, beauty, massage, facial, nails, aestethic]
+            
+            .service-content--page(style="background-image: url(img/categories/#{service.name}.#{service.format})", id="#{service.name}", class="#{service.name}")
+              .grid
+                
+                .service-content--page--inner
+                  .service-content--page--header
+                    h1.service-content--page--title #{service.title}
+                    
+                    span.close-page
+
+                      svg(width='60px', height='60px', viewbox='0 0 60 60', xmlns='http://www.w3.org/2000/svg')
+                        g(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd', sketch:type='MSPage')
+                          g.circle(sketch:type='MSLayerGroup', transform='translate(-13.000000, -13.000000)', fill='#D8D8D8')
+                            path(d='M40,40 L25.0036812,40 C23.3498463,40 22,41.3431458 22,43 C22,44.6534829 23.3447939,46 25.0036812,46 L40,46 L40,60.9963188 C40,62.6501537 41.3431458,64 43,64 C44.6534829,64 46,62.6552061 46,60.9963188 L46,46 L60.9963188,46 C62.6501537,46 64,44.6568542 64,43 C64,41.3465171 62.6552061,40 60.9963188,40 L46,40 L46,25.0036812 C46,23.3498463 44.6568542,22 43,22 C41.3465171,22 40,23.3447939 40,25.0036812 L40,40 Z M17.0192379,28 C8.73496664,42.3487787 13.6512213,60.6964909 28,68.9807621 C42.3487787,77.2650334 60.6964909,72.3487787 68.9807621,58 C77.2650334,43.6512213 72.3487787,25.3035091 58,17.0192379 C43.6512213,8.73496664 25.3035091,13.6512213 17.0192379,28 Z', sketch:type='MSShapeGroup', transform='translate(43.000000, 43.000000) rotate(-45.000000) translate(-43.000000, -43.000000) ')
+
+                  .service-content--page--body
+                  
+                    case service.name
+                      when 'tanning'
+                        include templates/services/tanning
+                      when 'waxing'
+                        include templates/services/waxing
+                      when 'vibraxis'
+                        include templates/services/vibraxis
+                      when 'beauty'
+                        include templates/services/beauty
+                      when 'massage'
+                        include templates/services/massage
+                      when 'facial'
+                        include templates/services/facial
+                      when 'nails'
+                        include templates/services/nails
+                      when 'aestethic'
+                        include templates/services/aestethic
+
+          span.loading
+          
+            // By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL
+            //- 
+            svg(width='140', height='64', viewbox='0 0 140 64', xmlns='http://www.w3.org/2000/svg', fill='#CC514C')
+              path(d='M30.262 57.02L7.195 40.723c-5.84-3.976-7.56-12.06-3.842-18.063 3.715-6 11.467-7.65 17.306-3.68l4.52 3.76 2.6-5.274c3.717-6.002 11.47-7.65 17.305-3.68 5.84 3.97 7.56 12.054 3.842 18.062L34.49 56.118c-.897 1.512-2.793 1.915-4.228.9z', fill-opacity='.5')
+                animate(attributename='fill-opacity', begin='0s', dur='1.4s', values='0.5;1;0.5', calcmode='linear', repeatcount='indefinite')
+              path(d='M105.512 56.12l-14.44-24.272c-3.716-6.008-1.996-14.093 3.843-18.062 5.835-3.97 13.588-2.322 17.306 3.68l2.6 5.274 4.52-3.76c5.84-3.97 13.592-2.32 17.307 3.68 3.718 6.003 1.998 14.088-3.842 18.064L109.74 57.02c-1.434 1.014-3.33.61-4.228-.9z', fill-opacity='.5')
+                animate(attributename='fill-opacity', begin='0.7s', dur='1.4s', values='0.5;1;0.5', calcmode='linear', repeatcount='indefinite')
+              path(d='M67.408 57.834l-23.01-24.98c-5.864-6.15-5.864-16.108 0-22.248 5.86-6.14 15.37-6.14 21.234 0L70 16.168l4.368-5.562c5.863-6.14 15.375-6.14 21.235 0 5.863 6.14 5.863 16.098 0 22.247l-23.007 24.98c-1.43 1.556-3.757 1.556-5.188 0z')
+              
+      section#elemis.elemis
+        include templates/elemis
+
+      section.testimonials
+        include templates/testimonials
+
+    footer.footer#footer
+      .footer-backdrop
+
+      .grid
+
         .row
+          .cell-xs-12.cell-sm-5.footer-content
+            
+            address.footer-address
+              h1.footer-address-title!= suntrap
+              h3.footer-address-phone 01782 799 733
 
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-4.cell-lg-4.service.service-tanning
-            include jade/tanning
+              p.footer-address-content.
+                35 Dimsdale Parade East, Wolstanton <br />
+                Newcastle-under-Lyme <br />
+                ST5 8BX
 
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-4.cell-lg-3.service.service-massage
-            include jade/massage
+            form.footer-address-form(action='http://maps.google.com/maps', class='geolocation', method='get', target='_blank')
+              input(type='hidden', name='saddr', value='')
+              input(type='hidden', name='daddr', value='ST5 4WS, 35 Dimsdale Parade East, Wolstanton')
+              input.footer-address-form-button(type='submit', value='Get directions')
 
-          .cd-section.cell-xs-12.cell-sm-4.cell-md-4.cell-lg-5.service.service-facial
-            include jade/facial
+            copyright.footer-copyright
+              p.
+                Design &amp; Development by <a href='http://www.creative-studio51.co.uk'>Studio51 Creative Services</a>
 
-          .cd-section.cell-xs-12.cell-sm-4.cell-md-3.cell-lg-3.service.service-waxing
-            include jade/waxing
+              p.
+                &copy; #{suntrap} 2016. All names, brands and imagery used are
+                trademarks and / or copyrighted materials of their respective
+                owners.
 
-          .cd-section.cell-xs-12.cell-sm-4.cell-md-3.cell-lg-4.service.service-vibraxis
-            include jade/vibraxis
+          .cell-xs-12.cell-sm.footer-map
 
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-3.cell-lg-2.service.service-nails
-            include jade/nails
-
-          .cd-section.cell-xs-12.cell-sm-6.cell-md-3.cell-lg-3.service.service-beauty
-            include jade/beauty
-
-      section.presentation
-        .elemis
-
-    footer
-      | Suntrap Lounge
-    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
-    script(src="js/main.min.js")
-    script(src="js/velocity.min.js")
+    script(src='js/dependencies.js')
+    script(src='js/app.min.js')
+    
+    script.
+      new grid3D(document.getElementById('services'));

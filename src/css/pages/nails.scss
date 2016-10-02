@@ -1,0 +1,41 @@
+.nails {
+  .alert { background-color: $service-nails-color; }
+
+  .service {
+    &-category--title {
+      background-color: rgba($service-nails-color, .3);
+
+      &:before { background-color: $service-nails-color }
+    }
+
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-nails-color, 1), rgba($service-nails-color, 0));
+        }
+
+        &--caption { border-color: $service-nails-color; }
+
+        &--meta {
+          &-section {
+
+            &.poper {
+              background-color: $service-nails-color;
+              box-shadow: 6px 6px 0 0 rgba($service-nails-color, .5);
+            }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-nails-color; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

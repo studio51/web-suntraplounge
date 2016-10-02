@@ -1,0 +1,41 @@
+.facial {
+  .alert { background-color: $service-facial-color; }
+
+  .service {
+    &-category--title {
+      background-color: rgba($service-facial-color, .3);
+
+      &:before { background-color: $service-facial-color }
+    }
+
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-facial-color, 1), rgba($service-facial-color, 0));
+        }
+
+        &--caption { border-color: $service-facial-color; }
+
+        &--meta {
+          &-section {
+
+            &.poper {
+              background-color: $service-facial-color;
+              box-shadow: 6px 6px 0 0 rgba($service-facial-color, .5);
+            }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-facial-color; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

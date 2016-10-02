@@ -1,0 +1,41 @@
+.waxing {
+  .alert { background-color: $service-waxing-color; }
+
+  .service {
+    &-category--title {
+      background-color: rgba($service-waxing-color, .3);
+
+      &:before { background-color: $service-waxing-color }
+    }
+
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-waxing-color, 1), rgba($service-waxing-color, 0));
+        }
+
+        &--caption { border-color: $service-waxing-color; }
+
+        &--meta {
+          &-section {
+
+            &.poper {
+              background-color: $service-waxing-color;
+              box-shadow: 6px 6px 0 0 rgba($service-waxing-color, .5);
+            }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-waxing-color; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

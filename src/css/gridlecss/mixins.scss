@@ -1,0 +1,28 @@
+// Generate Flex Alignments
+//
+@mixin flex-alignments( $parent, $axis, $class ) {
+
+  @each $element in $class {
+
+    $selector: nth($element, 1);
+    $rule: unquote(nth($element, 2));
+
+    #{ $parent }#{ $selector } {
+
+      @if $axis == "x" {
+
+        display: flex;
+        flex: 1;
+        justify-content: $rule;
+
+      } @else if $axis == "y" {
+
+        align-items: $rule;
+      }
+
+      &--self {
+        align-self: $rule;
+      }
+    }
+  }
+}

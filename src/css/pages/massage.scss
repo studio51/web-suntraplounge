@@ -1,0 +1,41 @@
+.massage {
+  .alert { background-color: $service-massage-color; }
+
+  .service {
+    &-category--title {
+      background-color: rgba($service-massage-color, .3);
+
+      &:before { background-color: $service-massage-color }
+    }
+
+    &-content {
+      &--page {
+
+        &::after {
+          content: '';
+          background: linear-gradient(to top, rgba($service-massage-color, 1), rgba($service-massage-color, 0));
+        }
+
+        &--caption { border-color: $service-massage-color; }
+
+        &--meta {
+          &-section {
+
+            &.poper {
+              background-color: $service-massage-color;
+              box-shadow: 6px 6px 0 0 rgba($service-massage-color, .5);
+            }
+          }
+        }
+
+        &--header {
+          .close-page {
+            svg {
+              .circle { fill: $service-massage-color; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

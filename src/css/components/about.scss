@@ -1,0 +1,53 @@
+.about {
+  .accreditation { width: 100%; }
+
+  &-inner {
+    background-color: #fff;
+    border-radius: ui(border_radius_size);
+    padding: ui(spacing);
+    margin: ui(spacing);
+    text-align: center;
+    align-items: center;
+
+    @include mq($from: 'sm') {
+      text-align: left;
+      padding: ui(spacing) * 2;
+      margin: ui(spacing) 0;
+    }
+
+    @include mq($from: 'sm') {
+      margin: (ui(spacing) * 2) 0;
+    }
+
+    &-image {
+      $image-size: 230px;
+
+      align-self: flex-start;
+      border-radius: 100%;
+      height: $image-size;
+      width: $image-size;
+    }
+
+    &-content {
+      margin: ui(spacing) 0;
+
+      @include mq($from: 'sm') { margin: 0 0 (ui(spacing) * 2) (ui(spacing) * 2); }
+    }
+
+    &-title {
+      font-size: 1.8em;
+      margin-bottom: ui(spacing);
+
+      @include mq($until: 'sm') {
+        align-self: center;
+        text-align: center;
+
+        &::after {
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
+  }
+}

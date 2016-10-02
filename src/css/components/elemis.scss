@@ -1,0 +1,100 @@
+.elemis {
+  background-color: #fff;
+  padding: ui(spacing);
+
+  @include mq($from: 'sm') { padding: (ui(spacing) * 2); }
+  @include mq($from: 'md') { padding-left: 0; padding-right: 0; }
+
+  &-tab {
+    &s {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      border-bottom: 3px solid #CDE7EA;
+      margin-bottom: ui(spacing) / 2;
+
+      @include mq($until: 'sm') {
+        margin-left: -(ui(spacing));
+        width: calc(100% + #{ui(spacing) * 2});
+      }
+    }
+
+    &-item {
+      flex: 1;
+
+      @include mq($from: 'sm') { flex: 0 1 auto; }
+
+      &-full {
+        display: none;
+
+        @include mq($from: 'sm') {
+          flex: 1;
+          display: flex;
+          opacity: .5;
+          justify-content: flex-end;
+          padding-bottom: ui(spacing);
+        }
+      }
+
+      &.active {
+        a { background-color: ui(brand_alt_color); }
+      }
+    }
+
+    &-link {
+      display: flex;
+      flex: 1;
+      color: ui(brand_color);
+      font-weight: 300;
+      padding: ui(spacing);
+    }
+  }
+
+  &-description { margin-top: ui(spacing); }
+
+  &-products {
+    margin-top: ui(spacing) / 2;
+    width: 100%;
+  }
+
+  &-service {
+    margin-top: ui(spacing) / 2;
+
+    &-price {
+      background-color: #f7ecb5;
+      color: darken(#f7ecb5, 50%);
+      border-radius: 100%;
+      padding: (ui(spacing) / 2 + 3px) (ui(spacing) / 2);
+      margin-right: ui(spacing) / 2;
+    }
+
+    &-title {}
+
+    &-description { margin-top: ui(spacing) / 2; }
+
+    &-offer {
+      background-color: #f7ecb5;
+      color: darken(#f7ecb5, 50%);
+      border-radius: ui(border_radius_size);
+      display: flex;
+      flex-direction: column;
+      margin-top: ui(spacing) / 2;
+      padding: (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) + (ui(spacing) / 2));
+      position: relative;
+
+      &::before {
+        align-items: center;
+        bottom: 0;
+        content: '£';
+        color: darken(#f7ecb5, 50%);
+        display: flex;
+        font-size: 22px;
+        left: 0;
+        padding: ui(spacing) / 2;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+}

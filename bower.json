@@ -1,11 +1,11 @@
 {
-  "name": "s51-whitmoretearooms-co-uk",
-  "version": "1.0.1",
+  "name": "s51-suntraplounge-co-uk",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:studio51/web-whitmoretearooms.git"
+    "url": "git@github.com:studio51/web-suntraplounge.git"
   },
-  "description": "Website for whitmoretearooms.co.uk , a tea room based in Whitmore, Newcastle-under-Lyme",
+  "description": "Website for suntraplounge.co.uk , a beauty and tanning salon based in Wolstanton, Newcastle-under-Lyme",
   "authors": "Vlad Radulescu",
   "license": "MIT",
   "keywords": [
@@ -16,23 +16,20 @@
     "SASS",
     "Jade",
     "website",
-    "whitmoretearooms",
+    "suntraplounge",
     "studio51"
   ],
   "main": [
     "src/js/main.js"
   ],
   "dependencies": {
-    "bootstrap-sass-official": "latest",
-    "font-awesome": "latest",
-    "modernizr": "latest",
-    "jquery": "latest"
+    "jquery": "latest",
+    "mojs": "^0.265.9"
   },
-  "devDependencies": {},
+  "devDependencies": { },
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components"
   ]
 }
-

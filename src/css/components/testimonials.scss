@@ -1,0 +1,43 @@
+.testimonial {
+  &s {
+    height: 45vh;
+    padding-top: ui(spacing) / 2;
+
+    @include mq($from: 'sm') { height: 35vh; }
+
+    .grid {
+      position: relative;
+
+      &, &::before {
+        background-image: url('../img/woman-sitting.png');
+        background-repeat: no-repeat;
+        background-position: -50px 25px;
+        background-size: contain;
+
+        @include mq($from: 'sm') { background-position: -80px 25px; }
+      }
+
+      &::before {
+        background-position: 0 0;
+        content: '';
+        position: absolute;
+        height: 100%;
+        left: -50px;
+        bottom: -25px;
+        width: 100%;
+
+        @include mq($from: 'sm') { left: -80px; }
+      }
+    }
+
+    &-container {
+      list-style: none;
+      padding: 0 0 0 140px;
+      margin: 0;
+
+      @include mq($until: 'sm') { padding-right: ui(spacing); }
+    }
+  }
+
+  &-author { margin-bottom: ui(spacing) / 2; }
+}

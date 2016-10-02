@@ -1,0 +1,330 @@
+$service-tanning-color: 	#5D9CEC;
+$service-waxing-color: 	  #EC87C0;
+$service-vibraxis-color:  #BAA286;
+$service-massage-color:	  #EE6B49;
+$service-beauty-color:	  #BAA286;
+$service-facial-color:	  #eebb99;
+$service-nails-color:		  #ED5565;
+$service-aestethic-color: #C8CDB5;
+
+.no-scroll { overflow: hidden; }
+
+.view-full {
+
+  .services--categories-inner { transform: translateZ(-1500px); }
+
+  .placeholder {
+  	transition: all 0.5s 0.1s cubic-bezier(0,0,0.25,1);
+  	transform: translateZ(1500px) rotateX(-179.9deg);
+  }
+}
+
+.service {
+
+  &s {
+
+    &--categories {
+
+      &-wrapper { perspective: 1500px; }
+
+      &-inner {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+      	transition: all 0.5s cubic-bezier(0,0,0.25,1);
+      	transform-style: preserve-3d;
+
+        .placeholder {
+          pointer-events: none;
+        	position: absolute;
+        	transform-style: preserve-3d;
+        	transition: all 0.5s ease-out;
+					width: 340px;
+					height: 300px;
+
+          .front,
+          .back {
+            display: block;
+          	position: absolute;
+          	width: 100%;
+          	height: 100%;
+          	backface-visibility: hidden;
+          }
+
+          .front {
+            img {
+              width: 100%;
+            	height: 100%;
+            }
+          }
+
+          .back {
+            background: white;
+          	transform: rotateY(180deg);
+          }
+        }
+      }
+    }
+
+    &--content {
+      overflow-y: scroll;
+    	height: 0;
+    	background: #fff;
+    	visibility: hidden;
+    	z-index: 400;
+      position: fixed;
+    	top: 0;
+    	left: 0;
+    	right: 0;
+    	bottom: 0;
+    	-webkit-overflow-scrolling: touch;
+
+      .loading {
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        pointer-events: none;
+      	transform: scale(.5);
+      	transition: opacity .5s, transform .5s;
+        z-index: 1;
+
+        &.show {
+          opacity: 1;
+        	transform: scale(1);
+        }
+      }
+
+      &.show {
+        height: auto;
+      	pointer-events: auto;
+      	visibility: visible;
+      }
+    }
+  }
+
+  &-category {
+    background-position: center center;
+    background-size: cover;
+  	cursor: pointer;
+  	user-select: none;
+		transition: all 5s ease-in;
+
+    &.facial { background-position: center 0; }
+    &.nails { background-position: bottom center; }
+
+    &.active { opacity: 1; }
+
+    img {
+      display: none;
+      height: 0;
+      width: 0;
+    }
+
+    &--title {
+      display: flex;
+			margin: ui(spacing);
+      padding: ui(spacing);
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+			text-align: center;
+			color: #f2f2f2;
+			text-transform: uppercase;
+		  transform: translateZ(0);
+		  backface-visibility: hidden;
+		  position: relative;
+		  transition-property: color;
+		  transition-duration: 0.2s;
+
+			&::before {
+			  content: "";
+			  position: absolute;
+			  z-index: -1;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  transform: scale(0);
+			  transition-property: transform;
+			  transition-duration: 0.3s;
+			  transition-timing-function: ease-out;
+			}
+
+			&:hover::before,
+			&:focus::before,
+			&:active::before { transform: scale(1); }
+    }
+  }
+
+  &-content {
+    &--page {
+      z-index: 10;
+    	position: absolute;
+    	top: 0;
+      visibility: hidden;
+    	width: 100%;
+    	overflow: hidden;
+    	opacity: 0;
+    	background: #fff;
+      min-height: 100%;
+      height: auto;
+      background-size: cover;
+			background-repeat: no-repeat;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 11;
+        background: linear-gradient(to top, rgba(#fff, 1), rgba(#fff, 0));
+      }
+
+      &.show {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.6s;
+
+        .close-page {
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+
+      &--inner {
+        z-index: 15;
+        position: relative;
+        background-color: #fff;
+        padding: ui(spacing);
+
+        @include mq($from: 'sm') {
+          padding: ui(spacing) * 2;
+          margin: ui(spacing) * 2;
+          border-radius: 9px;
+        }
+      }
+
+			&--header {
+				display: flex;
+				margin-bottom: ui(spacing);
+
+				.close-page {
+					margin-top: -(ui(spacing));
+					margin-right: -(ui(spacing));
+					display: flex;
+					cursor: pointer;
+					pointer-events: none;
+					opacity: 0;
+					z-index: 100;
+					transition: opacity 0.3s;
+				}
+			}
+
+      &--title { flex: 1; }
+
+      &--body { }
+
+      &--caption {
+        margin-bottom: ui(spacing);
+        background-color: #F5F7FA;
+        padding: ui(spacing) / 2;
+        border-radius: 3px;
+        border-left: 3px solid transparent;
+      }
+
+      &--meta {
+
+        &-section {
+          margin-top: ui(spacing);
+
+          img { width: 100%; }
+
+					.cell-divider {
+						margin: 0 (ui(spacing) / 2);
+						display: flex;
+						flex: 0 1 auto;
+					}
+
+          &.poper {
+            padding: ui(spacing);
+            color: #fff;
+          }
+        }
+
+        &-title { margin-bottom: ui(spacing) / 2; }
+
+        &-content { }
+
+        &-offer {
+          background-color: #f7ecb5;
+          color: darken(#f7ecb5, 50%);
+					border-radius: ui(border_radius_size);
+          display: flex;
+          flex-direction: column;
+          margin-top: ui(spacing) / 2;
+          padding: (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) / 2) (ui(spacing) + (ui(spacing) / 2));
+          position: relative;
+					flex: 1;
+
+					&s {
+						display: flex;
+						flex-direction: column;
+						margin-top: ui(spacing) / 2;
+						flex: 1;
+
+						> div {
+							margin-top: 1px;
+							border-radius: 0;
+
+							&:first-child {
+								border-top-left-radius: ui(border_radius_size);
+								border-top-right-radius: ui(border_radius_size);
+							}
+
+							&:last-child {
+								border-bottom-left-radius: ui(border_radius_size);
+								border-bottom-right-radius: ui(border_radius_size);
+							}
+						}
+					}
+
+          &::before {
+            align-items: center;
+            bottom: 0;
+            content: '£';
+            color: darken(#f7ecb5, 50%);
+            display: flex;
+            font-size: 22px;
+            left: 0;
+            padding: ui(spacing) / 2;
+            position: absolute;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.alert {
+  padding: 8px;
+  border-radius: 3px;
+  color: #fff;
+  margin-top: ui(spacing) / 2;
+}
+
+@import '../pages/tanning';
+@import '../pages/massage';
+@import '../pages/waxing';
+@import '../pages/vibraxis';
+@import '../pages/facial';
+@import '../pages/nails';
+@import '../pages/beauty';
+@import '../pages/aestethic';
