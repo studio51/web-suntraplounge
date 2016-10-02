@@ -1,10 +1,11 @@
 module.exports = function(grunt) {
 
+  var mozjpeg   = require('imagemin-mozjpeg');
   var appConfig = {
     host: 'localhost',
-    port: 1338,
-    src_dir: 'src/',
-    dist_dir: 'dist/'
+    port: 1337,
+    working_directory: 'src/',
+    preview_directory: 'dist/'
   };
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -17,16 +18,19 @@ module.exports = function(grunt) {
       grunt: {
         files: 'Gruntfile.js'
       },
+
       sass: {
-        files: ['<%= appConfig.src_dir %>css/**/*.scss'],
+        files: ['<%= appConfig.working_directory %>css/**/*.scss'],
         tasks: ['sass', 'postcss', 'cssnext']
       },
+
       uglify: {
-        files: ['<%= appConfig.src_dir %>js/**/*.js'],
+        files: ['<%= appConfig.working_directory %>js/**/*.js'],
         tasks: ['uglify']
       },
+
       jade: {
-        files: ['<%= appConfig.src_dir %>**/*.jade'],
+        files: ['<%= appConfig.working_directory %>**/*.jade'],
         tasks: ['jade']
       }
     },
@@ -35,19 +39,18 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            '<%= appConfig.dist_dir %>css/*.css',
-            '<%= appConfig.dist_dir %>js/*.js',
-            '<%= appConfig.dist_dir %>*.html',
-            '<%= appConfig.dist_dir %>img/*.jpg',
-            '<%= appConfig.dist_dir %>img/*.png',
+            '<%= appConfig.preview_directory %>css/*.css',
+            '<%= appConfig.preview_directory %>js/*.js',
+            '<%= appConfig.preview_directory %>*.html'
           ],
         },
 
         options: {
           watchTask: true,
           server: {
-            baseDir: appConfig.dist_dir
+            baseDir: appConfig.preview_directory
           },
+
           debugInfo: true,
           logConnections: true,
           notify: true,
@@ -55,10 +58,11 @@ module.exports = function(grunt) {
             {
               module: 'bs-html-injector',
               options: {
-                files: '<%= appConfig.dist_dir %>*.html'
+                files: '<%= appConfig.preview_directory %>*.html'
               }
             }
           ],
+
           ghostMode: {
             scroll: true,
             links: true,
@@ -80,20 +84,7 @@ module.exports = function(grunt) {
       },
 
       dist: {
-        src: ['<%= appConfig.dist_dir %>']
-      }
-    },
-
-    copy: {
-      src: {
-        files: [{
-          expand: true,
-          dot: true,
-          flatten: true,
-          src: ['bower_components/font-awesome/fonts/*', '<%= appConfig.src_dir %>fonts/*'],
-          dest: '<%= appConfig.dist_dir %>fonts/',
-          filter: 'isFile'
-        }]
+        src: ['<%= appConfig.preview_directory %>']
       }
     },
 
@@ -104,12 +95,12 @@ module.exports = function(grunt) {
 
       dist: {
         files: {
-          '<%= appConfig.dist_dir %>css/main.min.css': '<%= appConfig.src_dir %>css/main.scss'
+          '<%= appConfig.preview_directory %>css/main.min.css': '<%= appConfig.working_directory %>css/main.scss'
         }
       }
     },
 
-   postcss: {
+    postcss: {
       options: {
         map: false,
         processors: [
@@ -120,26 +111,23 @@ module.exports = function(grunt) {
       },
 
       dist: {
-        src: ['<%= appConfig.dist_dir %>css/main.min.css']
+        src: ['<%= appConfig.preview_directory %>css/main.min.css']
       }
     },
 
     cssnext: {
-      options: {
-        sourcemap: false
-      },
-
+      options: { sourcemap: false },
       dist: {
         files: {
-          '<%= appConfig.dist_dir %>css/main.min.css': '<%= appConfig.dist_dir %>css/main.min.css'
+          '<%= appConfig.preview_directory %>css/main.min.css': '<%= appConfig.preview_directory %>css/main.min.css'
         }
       }
     },
 
-    cssbeautifier : {
-      files : ['<%= appConfig.dist_dir %>css/main.min.css'],
+    cssbeautifier: {
+      files: ['<%= appConfig.preview_directory %>css/main.min.css'],
       options : {
-        indent: '  ',
+        indent: ' ',
         openbrace: 'end-of-line',
         autosemicolon: true
       }
@@ -152,52 +140,78 @@ module.exports = function(grunt) {
       },
 
       target: {
-        files: {
-          '<%= appConfig.dist_dir %>css/main.min.css': ['<%= appConfig.dist_dir %>css/main.min.css'],
-        }
+        files: { '<%= appConfig.preview_directory %>css/main.min.css': ['<%= appConfig.preview_directory %>css/main.min.css'] }
       }
+    },
+
+    concat: {
+      options: {
+        stripBanners: true,
+        separator: ';'
+      },
+
+      dist: {
+        src: [
+          '<%= appConfig.working_directory %>js/modernizr.custom.js',
+          '<%= appConfig.working_directory %>js/helper.js',
+          '<%= appConfig.working_directory %>js/grid3d.js',
+          '<%= appConfig.working_directory %>js/main.js'
+        ],
+        dest: '<%= appConfig.preview_directory %>js/app.js'
+      },
     },
 
     uglify: {
       dist: {
         options: {
-          beautify: true
+          banner: '/* \n' +
+                  ' * <%= pkg.homepage %>\n' +
+                  ' * v<%= pkg.version %> - <%= grunt.template.today("dd/mm/yyyy") %>\n' +
+                  ' * \n' +
+                  ' * <%= pkg.description %>\n' +
+                  ' * \n' +
+                  ' * Author: <%= pkg.author %>\n' +
+                  ' * Author URL: <%= pkg.author_url %>\n' +
+                  ' * \n' +
+                  ' */\n' +
+                  '\n'
         },
 
         files: {
-          // '<%= appConfig.dist_dir %>js/main.min.js': ['<%= appConfig.src_dir %>js/*.js'],
-          '<%= appConfig.dist_dir %>js/card_circle.min.js': ['<%= appConfig.src_dir %>js/card_circle.js'],
-          '<%= appConfig.dist_dir %>js/cash.min.js': ['<%= appConfig.src_dir %>js/cash.js'],
-          '<%= appConfig.dist_dir %>js/unveil.min.js': ['<%= appConfig.src_dir %>js/unveil.js'],
-          '<%= appConfig.dist_dir %>js/gmaps.min.js': ['<%= appConfig.src_dir %>js/gmaps.js'],
-          '<%= appConfig.dist_dir %>js/main.min.js': ['<%= appConfig.src_dir %>js/main.js'],
-          '<%= appConfig.dist_dir %>js/scroll_to_plugin.min.js': ['<%= appConfig.src_dir %>js/scroll_to_plugin.js'],
-          '<%= appConfig.dist_dir %>js/trianglify.min.js': ['<%= appConfig.src_dir %>js/trianglify.js'],
-          '<%= appConfig.dist_dir %>js/tween-max.min.js': ['<%= appConfig.src_dir %>js/tween-max.js']
+          '<%= appConfig.preview_directory %>js/app.min.js': ['<%= appConfig.preview_directory %>js/app.js']
         }
+      }
+    },
+
+    bower_concat: {
+      all: {
+        dest: {
+          'js': '<%= appConfig.preview_directory %>js/dependencies.js',
+          'css': '<%= appConfig.preview_directory %>css/dependencies.css'
+        },
+        bowerOptions: { relative: false }
       }
     },
 
     jade: {
       html: {
-        files: {
-          '<%= appConfig.dist_dir %>': ['<%= appConfig.src_dir %>*.jade']
-        },
-
         options: {
           client: false,
           pretty: true
-        }
+        },
+
+        files: { '<%= appConfig.preview_directory %>': ['<%= appConfig.working_directory %>*.jade'] }
       }
     },
 
     'ftp-deploy': {
       build: {
         auth: {
-          host: 'suntraplounge.co.uk',
-          port: 21,
-          authKey: 'studio51'
+          host    : 'suntraplounge.co.uk',
+          port    : 21,
+          authKey : 'studio51'
         },
+
         src: 'dist',
         dest: '/public_html',
         exclusions: ['**/.DS_Store']
@@ -205,73 +219,36 @@ module.exports = function(grunt) {
     },
 
     imagemin: {
-      png: {
-        options: {
-          optimizationLevel: 7
-        },
-        files: [
-          {
-            expand: true,
-            cwd: '<%= appConfig.src_dir %>img/',
-            src: ['**/*.png'],
-            dest: '<%= appConfig.dist_dir %>img/',
-            ext: '.png'
-          }
-        ]
-      },
-
-      jpg: {
-        options: {
-          progressive: true
-        },
-        files: [
-          {
-            expand: true,
-            cwd: '<%= appConfig.src_dir %>img/',
-            src: ['**/*.jpg'],
-            dest: '<%= appConfig.dist_dir %>img/',
-            ext: '.jpg'
-          }
-        ]
-      }
-    },
-
-    svgmin: {
       options: {
-        plugins: [
-          { collapseGroups: false },
-          { removeUnknownsAndDefaults: false }
-        ]
+        optimizationLevel: 1,
+        use: [mozjpeg()],
+        svgoPlugins: [{
+          removeViewBox: false
+        }]
       },
-      dist: {
+
+      dynamic: {
         files: [{
           expand: true,
-          cwd: '<%= appConfig.src_dir %>img',
-          src: '{,*/}*.svg',
-          dest: '<%= appConfig.dist_dir %>img'
+          cwd: '<%= appConfig.working_directory %>img/',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: '<%= appConfig.preview_directory %>img/'
         }]
       }
     }
   });
 
-  grunt.registerTask('compile-css', [
-    'sass',
-    'postcss',
-    'cssnext',
-    'imagemin',
-    'svgmin',
-    'copy'
-  ]);
+  grunt.registerTask('compile-css',  [ 'sass', 'postcss', 'cssnext' ]);
+  grunt.registerTask('compress-img', ['imagemin']);
+  grunt.registerTask('compile-js',   ['concat', 'uglify']);
+  grunt.registerTask('compile-html', ['jade']);
 
-  grunt.registerTask('compile-js', [
-    'uglify'
+  grunt.registerTask('compile-theme', [
+    'compile-css',
+    'compile-js',
+    'compress-img',
+    'compile-html'
   ]);
-
-  grunt.registerTask('compile-html', [
-    'jade'
-  ]);
-
-  grunt.registerTask('compile-theme', ['compile-css', 'compile-js', 'compile-html']);
 
   grunt.registerTask('prettify', [
     'cssbeautifier',
@@ -280,11 +257,12 @@ module.exports = function(grunt) {
 
   grunt.registerTask('preview', [
     'compile-theme',
+    'bower_concat',
     'browserSync',
     'watch'
   ]);
 
   grunt.registerTask('default', ['clean', 'preview']);
   grunt.registerTask('prepare', ['clean', 'compile-theme', 'prettify']);
-  grunt.registerTask('deploy', ['prepare', 'ftp-deploy'])
+  grunt.registerTask('deploy',  ['prepare', 'ftp-deploy'])
 }
