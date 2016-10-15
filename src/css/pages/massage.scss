@@ -38,4 +38,24 @@
       }
     }
   }
+
+  &--benefit {
+    padding: ui(spacing);
+    background-color: rgba(darken($service-massage-color, 10%), .3);
+    margin-top: 1px;
+
+    &-button {
+      padding: ui(spacing) / 2;
+      background-color: rgba(darken($service-massage-color, 10%), .3);
+      border-radius: ui(border_radius_size);
+      color: #fff;
+      display: inline-flex;
+      text-transform: uppercase;
+      font-size: .7em;
+      margin-top: ui(spacing) / 2;
+    }
+
+    &-container { margin: ui(spacing) (-(ui(spacing))) (-(ui(spacing))); }
+    &-title { margin-bottom: ui(spacing) / 3; }
+  }
 }

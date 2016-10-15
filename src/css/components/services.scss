@@ -10,7 +10,6 @@ $service-aestethic-color: #C8CDB5;
 .no-scroll { overflow: hidden; }
 
 .view-full {
-
   .services--categories-inner { transform: translateZ(-1500px); }
 
   .placeholder {
@@ -20,7 +19,6 @@ $service-aestethic-color: #C8CDB5;
 }
 
 .service {
-
   &s {
 
     &--categories {
@@ -171,8 +169,7 @@ $service-aestethic-color: #C8CDB5;
     	overflow: hidden;
     	opacity: 0;
     	background: #fff;
-      min-height: 100%;
-      height: auto;
+      height: 0;
       background-size: cover;
 			background-repeat: no-repeat;
 
@@ -191,7 +188,8 @@ $service-aestethic-color: #C8CDB5;
         visibility: visible;
         opacity: 1;
         transition: opacity 0.6s;
-
+        min-height: 100%;
+        height: auto;
         .close-page {
           opacity: 1;
           pointer-events: auto;
@@ -229,8 +227,6 @@ $service-aestethic-color: #C8CDB5;
 
       &--title { flex: 1; }
 
-      &--body { }
-
       &--caption {
         margin-bottom: ui(spacing);
         background-color: #F5F7FA;
@@ -240,7 +236,6 @@ $service-aestethic-color: #C8CDB5;
       }
 
       &--meta {
-
         &-section {
           margin-top: ui(spacing);
 
@@ -259,8 +254,6 @@ $service-aestethic-color: #C8CDB5;
         }
 
         &-title { margin-bottom: ui(spacing) / 2; }
-
-        &-content { }
 
         &-offer {
           background-color: #f7ecb5;
