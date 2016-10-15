@@ -220,7 +220,7 @@ module.exports = function(grunt) {
 
     imagemin: {
       options: {
-        optimizationLevel: 1,
+        optimizationLevel: 7,
         use: [mozjpeg()],
         svgoPlugins: [{
           removeViewBox: false
@@ -240,7 +240,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('compile-css',  [ 'sass', 'postcss', 'cssnext' ]);
   grunt.registerTask('compress-img', ['imagemin']);
-  grunt.registerTask('compile-js',   ['concat', 'uglify']);
+  grunt.registerTask('compile-js',   ['concat', 'uglify', 'bower_concat']);
   grunt.registerTask('compile-html', ['jade']);
 
   grunt.registerTask('compile-theme', [
@@ -257,7 +257,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('preview', [
     'compile-theme',
-    'bower_concat',
     'browserSync',
     'watch'
   ]);

@@ -27,10 +27,7 @@ $suntrap: (
   body_color: #EDEBDE,
   brand_color: #221D52,
   brand_alt_color: #CDE7EA,
-  border_radius_size: 3px,
-  tanning_main_color: #C49991,
-  massage_main_color: #EFF0D1,
-  beauty_main_color: #EFF0D1
+  border_radius_size: 3px
 );
 
 @function ui($key) {
@@ -85,8 +82,6 @@ body {
   font-weight: 300;
   font-size: 14px;
 }
-
-// section { background-color: ui(body_color); }
 
 .navbar {
   background-color: none;
