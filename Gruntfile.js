@@ -213,7 +213,7 @@ module.exports = function(grunt) {
         },
 
         src: 'dist',
-        dest: '/public_html',
+        dest: '/',
         exclusions: ['**/.DS_Store']
       }
     },
