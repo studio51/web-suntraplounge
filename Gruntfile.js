@@ -220,7 +220,7 @@ module.exports = function(grunt) {
 
     imagemin: {
       options: {
-        optimizationLevel: 7,
+        optimizationLevel: 10,
         use: [mozjpeg()],
         svgoPlugins: [{
           removeViewBox: false
